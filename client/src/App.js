@@ -3,7 +3,7 @@ import button from './components/user-profile/user-profile.js';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import EditUser from './components/edit-user.component';
-import CreateUser from './components/create-user.component';
+import CreateUser from './components/create-user.components.js';
 
 function App() {
   return (

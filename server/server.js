@@ -10,7 +10,7 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(proccess.env.DB_URI);
+mongoose.connect(process.env.DB_URI);
 const connection = mongoose.connection;
 connection.on('error', console.error.bind(console, 'connection error: '));
 connection.once('open', () => {

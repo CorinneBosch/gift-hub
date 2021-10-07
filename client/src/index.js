@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import DonateButton from './user-profile/user-profile.js';
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <DonateButton />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

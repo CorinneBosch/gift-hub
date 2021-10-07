@@ -1,3 +1,21 @@
+App:
+
+A platform allowing users to receive small gifts from friends.
+
+User Stories:
+
+As a user
+So that I may receive a gift from my friend
+I would like to create an account on TBC.
+
+~ (- sign-up page ~ username, email, password - database setup - verification - profile page)
+
+As a friend
+So that I may show my appreciation
+I would like to be send a small gift to my friend.
+
+~ (- profile page link (access to page) - button to make a donation - receive a message thanking friend for gift)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

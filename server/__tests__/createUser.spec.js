@@ -9,9 +9,13 @@ const request = supertest(app);
 // });
 
 describe('User', () => {
+  app.get("/users", async (req, res) => {
+  res.json([]);
   it("get the user test endpoints", async done => {
     const res = await request.get("/users");
     expect(res.status).toBe(200)
     done();
   });
+
+});
 });

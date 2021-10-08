@@ -4,7 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageReporters": [
+      "html"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -15,6 +21,7 @@
     "cypress": "^8.5.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "jest": "^27.2.4",
     "mongoose": "^6.0.9"
   }
 }

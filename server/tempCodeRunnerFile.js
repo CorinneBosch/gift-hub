@@ -1,1 +1,1 @@
-process.env.DB_URI
+process.env.DB_URI_TEST;

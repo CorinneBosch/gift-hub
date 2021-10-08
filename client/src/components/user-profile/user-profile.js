@@ -6,7 +6,7 @@ function DonateButton() {
   return (
     <div>  
        <button onClick={clickMe}>
-          Buy me a drink
+          Buy me beer
       </button>
 
     </div>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Modal } from "./modal";
-import TriggerButton from "../trigger/trigger.js";
+import PaymentButton from "../paymentButton/paymentButton.js";
 
 export class Container extends Component {
   state = { isShown: false };
@@ -12,7 +12,7 @@ export class Container extends Component {
   };
   closeModal = () => {
     this.setState({ isShown: false });
-    this.TriggerButton.focus();
+    this.PaymentButton.focus();
     this.toggleScrollLock();
   };
   onKeyDown = (event) => {
@@ -31,10 +31,10 @@ export class Container extends Component {
   render() {
     return (
       <React.Fragment>
-        <TriggerButton
+        <PaymentButton
           showModal={this.showModal}
-          buttonRef={(n) => (this.TriggerButton = n)}
-          triggerText={this.props.triggerText}
+          buttonRef={(n) => (this.PaymentButton = n)}
+          PaymentButtonText={this.props.PaymentButtonText}
         />
         {this.state.isShown ? (
           <Modal

@@ -10,7 +10,7 @@ const userProfile = () => {
   };
   return (
     <div className="userProfile">
-      <Container triggerText={PaymentButtonText} onSubmit={onSubmit} />
+      <Container PaymentButtonText={PaymentButtonText} onSubmit={onSubmit} />
     </div>
   );
 };

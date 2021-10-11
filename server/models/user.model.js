@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-// const validator = require('validator');
-
+const isValidEmail = require('validator').isEmail;
+// const { isEmail } = pkg;
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
@@ -17,8 +17,8 @@ const userSchema = new Schema(
       required: [true, 'email required'],
       unique: true,
       trim: true,
-      match: [/\S+@\S+\.\S+/, 'is invalid'],
-      // validate: { validator: validator.isEmail(), message: 'Invalid email.' },
+      // match: [/\S+@\S+\.\S+/, 'is invalid'],
+      validate: [isValidEmail, 'Invalid email.'],
     },
     password: {
       type: String,

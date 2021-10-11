@@ -7,7 +7,7 @@ export const Form = ({ onSubmit }) => {
         <label htmlFor="name">Name</label>
         <input
           type="name"
-          className="form-control"
+          className="form-control gift_form_name"
           id="name"
           placeholder="Enter name here"
         />
@@ -16,7 +16,7 @@ export const Form = ({ onSubmit }) => {
         <label htmlFor="email">Email address</label>
         <input
           type="email"
-          className="form-control"
+          className="form-control gift_form_email"
           id="email"
           placeholder="name@example.com"
         />
@@ -25,7 +25,7 @@ export const Form = ({ onSubmit }) => {
         <label htmlFor="email">Message</label>
         <input
           type="textarea"
-          className="form-control"
+          className="form-control gift_form_message"
           id="message"
           placeholder="Drop a message..."
         />

@@ -1,8 +1,8 @@
-import React from 'react';
-import { Container } from './container/container.js';
+import React from "react";
+import { Container } from "./form/container.js";
 
 const userProfile = () => {
-  const triggerText = 'Buy me beer';
+  const PaymentButtonText = "Buy me beer";
   const onSubmit = (event) => {
     event.preventDefault(event);
     console.log(event.target.email.value);
@@ -10,7 +10,7 @@ const userProfile = () => {
   };
   return (
     <div className="userProfile">
-      <Container triggerText={triggerText} onSubmit={onSubmit} />
+      <Container triggerText={PaymentButtonText} onSubmit={onSubmit} />
     </div>
   );
 };

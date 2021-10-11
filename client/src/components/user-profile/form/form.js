@@ -1,8 +1,17 @@
-import React from 'react';
+import React from "react";
 
 export const Form = ({ onSubmit }) => {
   return (
     <form onSubmit={onSubmit}>
+      <div className="form-group">
+        <label htmlFor="name">Name</label>
+        <input
+          type="name"
+          className="form-control"
+          id="name"
+          placeholder="Enter name here"
+        />
+      </div>
       <div className="form-group">
         <label htmlFor="email">Email address</label>
         <input

@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs');
 const router = require('express').Router();
 let User = require('../models/user.model');
 
@@ -7,21 +8,30 @@ router.route('/').get((req, res) => {
     .catch((err) => res.status(400).json('Error: ' + err));
 });
 
-router.route('/add').post((req, res) => {
-  const username = req.body.username;
-  const email = req.body.email;
-  const password = req.body.password;
+router.route('/register').post((req, res) => {
+  const { username, email, password } = req.body;
+  bcrypt.hash(password, 12).then((hashpw) => {
+    User.findOne({ username: username }).then((savedUser) => {
+      if (savedUser) {
+        return res.status(400).json({ username: 'usermname already exists' });
+      }
+      const newUser = new User({
+        username,
+        password: hashpw,
+        email,
+      });
 
-  const newUser = new User({
-    username,
-    email,
-    password,
+      newUser
+        .save()
+        .then((newUser) => {
+          res.json('User registered!');
+          console.log(newUser.email);
+        })
+        .catch((err) => {
+          res.status(400).json('Error: ' + err);
+        });
+    });
   });
-
-  newUser
-    .save()
-    .then(() => res.json('User added!'))
-    .catch((err) => res.status(400).json('Error: ' + err));
 });
 
 module.exports = router;

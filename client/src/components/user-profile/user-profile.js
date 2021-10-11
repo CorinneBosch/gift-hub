@@ -1,17 +1,18 @@
-function clickMe(){
-  alert('Thanks, you are so generous!')
-}
+import React from "react";
+import { Container } from "./form/container.js";
 
-function DonateButton() {
+const userProfile = () => {
+  const PaymentButtonText = "Buy me beer";
+  const onSubmit = (event) => {
+    event.preventDefault(event);
+    console.log(event.target.email.value);
+    console.log(event.target.message.value);
+  };
   return (
-    <div>  
-       <button onClick={clickMe}>
-          Buy me beer
-      </button>
-
+    <div className="userProfile">
+      <Container PaymentButtonText={PaymentButtonText} onSubmit={onSubmit} />
     </div>
-     
   );
-}
+};
 
-export default DonateButton;
+export default userProfile;

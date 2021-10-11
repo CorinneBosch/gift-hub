@@ -5,9 +5,9 @@ describe('UserProfile', () => {
 
   describe('profile page', () => {
     it('is expected to have a profile picture, bio, gift button', () => {
-      cy.get('.bio').should('exist')
-      cy.get('.profile_pic').should('exist')
-      cy.get('.gift_button').should('exist')
+      cy.get('.bio_section').should('exist')
+      cy.get('.profile_pic_section').should('exist')
+      cy.get('.payment_section').should('exist')
     })
   })
 })

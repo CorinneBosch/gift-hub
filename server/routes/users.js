@@ -82,4 +82,10 @@ userRouter.get('/:username', (req, res) => {
     .catch((err) => res.status(400).json('Error: ' + err));
 });
 
+userRouter.delete('/:id', (req, res) => {
+  User.findByIdAndDelete(req.params.id)
+    .then(() => res.json('User deleted.'))
+    .catch((err) => res.status(400).json('Error: ' + err));
+});
+
 module.exports = userRouter;

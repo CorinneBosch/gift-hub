@@ -71,4 +71,9 @@ userRouter.post('/login', (req, res) => {
   });
 });
 
+userRouter.get('/logout', passport.authenticate(), (req, res) => {
+  res.clearCookie('unauthorized');
+  res.json({ user: { username: '', email: '' }, success: true });
+});
+
 module.exports = userRouter;

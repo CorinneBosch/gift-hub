@@ -16,7 +16,7 @@ const signToken = (userID) => {
   );
 };
 
-userRouter.route('/').get((req, res) => {
+userRouter.get('/', (req, res) => {
   User.find()
     .then((users) => res.json(users))
     .catch((err) => res.status(400).json('Error: ' + err));
@@ -25,7 +25,7 @@ userRouter.route('/').get((req, res) => {
 userRouter.route('/register').post((req, res) => {
   const { username, email, password } = req.body;
   bcrypt.hash(password, 12).then((hashpw) => {
-    User.findOne({ username: username }).then((savedUser) => {
+    User.findOne({ username }).then((savedUser) => {
       if (savedUser) {
         return res.status(400).json({ username: 'usermname already exists' });
       }
@@ -47,6 +47,22 @@ userRouter.route('/register').post((req, res) => {
     });
   });
 });
+
+// userRouter.post('/register', (req, res) => {
+//   const { username, email, password } = req.body;
+//   bcrypt.hash(password, 12).then((hashpw) => {
+//     User.findOne({ username }).then((savedUser) => {
+//       if (savedUser) {
+//         return res.status(400).json({ username: 'usermname already exists' });
+//       }
+//     });
+//     User.findOne({ email }).then((savedUser) => {
+//       if (savedUser) {
+//         return res.status(400).json({ email: 'usermname already exists' });
+//       }
+//     });
+//   });
+// });
 
 userRouter.post('/login', (req, res) => {
   const { email, password } = req.body;
@@ -82,10 +98,11 @@ userRouter.get('/:username', (req, res) => {
     .catch((err) => res.status(400).json('Error: ' + err));
 });
 
-userRouter.delete('/:id', (req, res) => {
-  User.findByIdAndDelete(req.params.id)
-    .then(() => res.json('User deleted.'))
-    .catch((err) => res.status(400).json('Error: ' + err));
-});
+// returning null for some reason
+// userRouter.delete('/:id', (req, res) => {
+//   User.findByIdAndDelete(req.params.id)
+//     .then(() => res.json('User profile deleted.'))
+//     .catch((err) => res.status(400).json('Error: ' + err));
+// });
 
 module.exports = userRouter;

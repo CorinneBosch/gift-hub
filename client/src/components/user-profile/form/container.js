@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { EditModal } from "./edit-modal";
+import Modal from "./modal";
 import Button from "../paymentButton/base-button.js";
 
-export class EditContainer extends Component {
+export class Container extends Component {
   state = { isShown: false };
   showModal = () => {
     this.setState({ isShown: true }, () => {
@@ -10,16 +10,19 @@ export class EditContainer extends Component {
     });
     this.toggleScrollLock();
   };
+
   closeModal = () => {
     this.setState({ isShown: false });
     this.Button.focus();
     this.toggleScrollLock();
   };
+
   onKeyDown = (event) => {
     if (event.keyCode === 27) {
       this.closeModal();
     }
   };
+
   onClickOutside = (event) => {
     if (this.modal && this.modal.contains(event.target)) return;
     this.closeModal();
@@ -38,7 +41,8 @@ export class EditContainer extends Component {
           buttonText={this.props.buttonText}
         />
         {this.state.isShown ? (
-          <EditModal
+          <Modal
+            formType={this.props.formType}
             onSubmit={this.props.onSubmit}
             modalRef={(n) => (this.modal = n)}
             buttonRef={(n) => (this.closeButton = n)}
@@ -52,4 +56,4 @@ export class EditContainer extends Component {
   }
 }
 
-export default EditContainer;
+export default Container;

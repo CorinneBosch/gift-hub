@@ -1,6 +1,5 @@
 import React from "react";
-import PaymentContainer from "./form/payment-container.js";
-import EditContainer from "./form/edit-container.js";
+import Container from "./form/container.js";
 
 const UserProfile = () => {
   const PaymentButtonText = "Buy me beer";
@@ -14,7 +13,7 @@ const UserProfile = () => {
     <div className='title_section user_profile_title'>
       <div className="userProfile">
         <div id='edit_profile' className='edit_profile_section'>
-        <EditContainer buttonText={EditButtonText} onSubmit={onSubmit}/>
+        <Container buttonText={EditButtonText} onSubmit={onSubmit}/>
         </div>
         <div className='profile_pic_section'>
 
@@ -36,7 +35,7 @@ const UserProfile = () => {
 
         </div>
         <div id='payment' className='payment_section'>
-          <PaymentContainer buttonText={PaymentButtonText} onSubmit={onSubmit}/>
+          <Container formType='payment' buttonText={PaymentButtonText} onSubmit={onSubmit}/>
         </div>
       </div>
     </div>

@@ -1,4 +1,7 @@
 import React from "react";
+import StripeCheckout from "react-stripe-checkout";
+const KEY =
+  "pk_test_51Jj97mFjKtpO9Sxr3ooea52A6mRUwCAMAsFfSmkqQwiLRq2y2krLim9DeUOASuZwBPtYCSXvX5Nj2X3Lf0VfvHKB00r77vAAZ1";
 
 export const Form = ({ onSubmit }) => {
   return (
@@ -31,9 +34,19 @@ export const Form = ({ onSubmit }) => {
         />
       </div>
       <div className="form-group">
-        <button className="form-control btn btn-primary" type="submit">
-          Send
-        </button>
+        <StripeCheckout
+          name="onlyGifts"
+          image=""
+          email
+          description="Your total is £5"
+          amount={500}
+          token={onToken}
+          stripeKey={KEY}
+        >
+          <button className="form-control btn btn-primary" type="submit">
+            Send
+          </button>
+        </StripeCheckout>
       </div>
     </form>
   );

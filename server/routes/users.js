@@ -48,4 +48,27 @@ userRouter.route('/register').post((req, res) => {
   });
 });
 
+userRouter.post('/login', (req, res) => {
+  const { email, password } = req.body;
+  User.findOne({ email: email }).then((savedUser) => {
+    if (!savedUser) {
+      return res.status(400).json('Error: ' + 'Invalid Email or password');
+    }
+    bcrypt
+      .compare(password, savedUser.password)
+      .then((match) => {
+        if (match) {
+          const token = signToken(savedUser._id);
+          res.cookie('access_token', token, { httpOnly: true, sameSite: true });
+          // res.json({ token: token });
+          res.status(200).json({ isAuthenticated: true, user: savedUser.username });
+          console.log('Login Successfull');
+        } else {
+          return res.status(400).json('Error: ' + 'Invalid Email or password');
+        }
+      })
+      .catch((err) => console.log(err));
+  });
+});
+
 module.exports = userRouter;

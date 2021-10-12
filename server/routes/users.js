@@ -82,16 +82,36 @@ userRouter.get('/:username', (req, res) => {
     .catch((err) => res.status(400).json('Error: ' + err));
 });
 
+userRouter.get('/:username', (req, res) => {
+  User.findOne({ username: `${req.params.username}` })
+    .then((user) => res.json(user))
+    .catch((err) => res.status(400).json('Error: ' + err));
+});
+
 userRouter.get('/authenticated', passport.authenticate('jwt', { session: false }), (req, res) => {
   const { username } = req.user;
   res.status(200).json({ isAuthenticated: true, user: { username } });
 });
 
-// returning null for some reason
-// userRouter.delete('/:id', (req, res) => {
-//   User.findByIdAndDelete(req.params.id)
-//     .then(() => res.json('User profile deleted.'))
-//     .catch((err) => res.status(400).json('Error: ' + err));
-// });
+userRouter.delete('/:id', (req, res) => {
+  User.findByIdAndDelete(req.params.id)
+    .then(() => res.json('User profile deleted.'))
+    .catch((err) => res.status(400).json('Error: ' + err));
+});
+
+userRouter.post('/update/:id', (req, res) => {
+  User.findById(req.params.id)
+    .then((user) => {
+      user.username = req.body.username;
+      user.email = req.body.email;
+      user.password = req.body.password;
+
+      user
+        .save()
+        .then(() => res.json('User updated!'))
+        .catch((err) => res.status(400).json('Error: ' + err));
+    })
+    .catch((err) => res.status(400).json('Error: ' + err));
+});
 
 module.exports = userRouter;

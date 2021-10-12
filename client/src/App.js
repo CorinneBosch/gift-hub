@@ -4,6 +4,7 @@ import UserProfile from "./components/user-profile/user-profile.js";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import EditUser from "./components/edit-user.component";
 import CreateUser from "./components/create-user.components.js";
+import Login from "./components/login.components.js";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Route path="/signup" component={CreateUser} />
       <Route path="/edit/:id" component={EditUser} />
       <Route path="/profile/:userId" component={UserProfile} />
+      <Route path="/login" component={Login} />
     </Router>
   );
 }

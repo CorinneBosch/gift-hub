@@ -5,10 +5,12 @@ import UserProfile from './components/user-profile/user-profile.js';
 import EditUser from './components/user-profile/edit-user';
 import CreateUser from './components/user-profile/register-user';
 import Login from './components/user-profile/login-user';
+import Home from './components/home';
 
 function App() {
   return (
     <Router>
+      <Route path='/' component={Home} />
       <Route path='/register' component={CreateUser} />
       <Route path='/edit/:id' component={EditUser} />
       <Route path='/profile/:userId' component={UserProfile} />

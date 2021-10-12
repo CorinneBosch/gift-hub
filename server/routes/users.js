@@ -48,22 +48,6 @@ userRouter.route('/register').post((req, res) => {
   });
 });
 
-// userRouter.post('/register', (req, res) => {
-//   const { username, email, password } = req.body;
-//   bcrypt.hash(password, 12).then((hashpw) => {
-//     User.findOne({ username }).then((savedUser) => {
-//       if (savedUser) {
-//         return res.status(400).json({ username: 'usermname already exists' });
-//       }
-//     });
-//     User.findOne({ email }).then((savedUser) => {
-//       if (savedUser) {
-//         return res.status(400).json({ email: 'usermname already exists' });
-//       }
-//     });
-//   });
-// });
-
 userRouter.post('/login', (req, res) => {
   const { email, password } = req.body;
   User.findOne({ email: email }).then((savedUser) => {
@@ -96,6 +80,11 @@ userRouter.get('/:username', (req, res) => {
   User.findOne({ username: `${req.params.username}` })
     .then((user) => res.json(user))
     .catch((err) => res.status(400).json('Error: ' + err));
+});
+
+userRouter.get('/authenticated', passport.authenticate('jwt', { session: false }), (req, res) => {
+  const { username } = req.user;
+  res.status(200).json({ isAuthenticated: true, user: { username } });
 });
 
 // returning null for some reason

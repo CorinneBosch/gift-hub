@@ -36,6 +36,7 @@ export default class CreateUser extends Component {
     });
   }
 
+  is;
   onSubmit(e) {
     e.preventDefault();
 
@@ -49,14 +50,12 @@ export default class CreateUser extends Component {
 
     axios.post('http://localhost:5000/users/register', user).then((res) => console.log(res.data));
 
-    this.setState({
-      username: '',
-      email: '',
-      password: '',
-    });
+    this.setState({ username: '', email: '', password: '' });
 
     window.location = '/login';
   }
+
+  // const [message, setMessage] = useState(null);
 
   render() {
     return (

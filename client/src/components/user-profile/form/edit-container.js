@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Modal } from "./modal";
-import PaymentButton from "../paymentButton/paymentButton.js";
+import { EditModal } from "./edit-modal";
+import Button from "../paymentButton/base-button.js";
 
-export class Container extends Component {
+export class EditContainer extends Component {
   state = { isShown: false };
   showModal = () => {
     this.setState({ isShown: true }, () => {
@@ -12,7 +12,7 @@ export class Container extends Component {
   };
   closeModal = () => {
     this.setState({ isShown: false });
-    this.PaymentButton.focus();
+    this.Button.focus();
     this.toggleScrollLock();
   };
   onKeyDown = (event) => {
@@ -28,16 +28,17 @@ export class Container extends Component {
   toggleScrollLock = () => {
     document.querySelector("html").classList.toggle("scroll-lock");
   };
+
   render() {
     return (
       <React.Fragment>
-        <PaymentButton
+        <Button
           showModal={this.showModal}
-          buttonRef={(n) => (this.PaymentButton = n)}
-          PaymentButtonText={this.props.PaymentButtonText}
+          buttonRef={(n) => (this.Button = n)}
+          buttonText={this.props.buttonText}
         />
         {this.state.isShown ? (
-          <Modal
+          <EditModal
             onSubmit={this.props.onSubmit}
             modalRef={(n) => (this.modal = n)}
             buttonRef={(n) => (this.closeButton = n)}
@@ -51,4 +52,4 @@ export class Container extends Component {
   }
 }
 
-export default Container;
+export default EditContainer;

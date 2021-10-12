@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Form } from '../form/form.js';
+import { Form } from './form.js';
 import FocusTrap from 'focus-trap-react';
-export const Modal = ({
+
+export const PaymentModal = ({
   onClickOutside,
   onKeyDown,
   modalRef,
@@ -46,4 +47,5 @@ export const Modal = ({
   );
 };
 
-export default Modal;
+
+export default PaymentModal;

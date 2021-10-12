@@ -15,7 +15,7 @@ export const EditForm = ({ onSubmit }) => {
       className='form-group edit_bio_section'
       >
         <label htmlFor='textarea'>Update bio</label>
-        <textarea value='Tell everyone how interesting you are...'/>
+        <textarea className='edit_bio_textarea' placeholder='Tell everyone how interesting you are...'/>
       </div>
 
       <div

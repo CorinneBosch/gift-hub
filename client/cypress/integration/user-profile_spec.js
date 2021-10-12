@@ -20,9 +20,9 @@ describe('UserProfile', () => {
     })
 
     it('allows user can edit their profile', () => {
-      cy.get('.edit').click()
-      cy.get('.edit_bio').type("Mighty Mouse is an American animated anthropomorphic superhero mouse character created by the Terrytoons studio for 20th Century Fox. The character was originally called Super Mouse, and made his debut in the 1942 short The Mouse of Tomorrow. The name was changed to Mighty Mouse in his eighth film, 1944's The Wreck of the Hesperus, and the character went on to star in 80 theatrical shorts, concluding in 1961 with Cat Alarm.")
-      cy.get('.update').click()
+      cy.contains('Edit profile').click()
+      cy.get('.edit_bio_textarea').type("Mighty Mouse is an American animated anthropomorphic superhero mouse character created by the Terrytoons studio for 20th Century Fox. The character was originally called Super Mouse, and made his debut in the 1942 short The Mouse of Tomorrow. The name was changed to Mighty Mouse in his eighth film, 1944's The Wreck of the Hesperus, and the character went on to star in 80 theatrical shorts, concluding in 1961 with Cat Alarm.")
+      cy.contains('Update').click()
       cy.get('.bio_section').find('.bio').should('have.text', "Mighty Mouse is an American animated anthropomorphic superhero mouse character created by the Terrytoons studio for 20th Century Fox. The character was originally called Super Mouse, and made his debut in the 1942 short The Mouse of Tomorrow. The name was changed to Mighty Mouse in his eighth film, 1944's The Wreck of the Hesperus, and the character went on to star in 80 theatrical shorts, concluding in 1961 with Cat Alarm.")
     })
   })

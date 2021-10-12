@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-export default class CreateUser extends Component {
+export default class Login extends Component {
   constructor(props) {
     super(props);
 
-    this.onChangeUsername = this.onChangeUsername.bind(this);
-    this.onChangeEmail = this.onChangeEmail.bind(this);
-    this.onChangePassword = this.onChangePassword.bind(this);
+    this.inputEmail = this.inputEmail.bind(this);
+    this.inputPassword = this.inputPassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
@@ -17,19 +17,13 @@ export default class CreateUser extends Component {
     };
   }
 
-  onChangeUsername(e) {
-    this.setState({
-      username: e.target.value,
-    });
-  }
-
-  onChangeEmail(e) {
+  inputEmail(e) {
     this.setState({
       email: e.target.value,
     });
   }
 
-  onChangePassword(e) {
+  inputPassword(e) {
     this.setState({
       password: e.target.value,
     });
@@ -39,17 +33,15 @@ export default class CreateUser extends Component {
     e.preventDefault();
 
     const user = {
-      username: this.state.username,
       email: this.state.email,
       password: this.state.password,
     };
 
-    console.log(user);
+    console.log(user.email);
 
-    axios.post('http://localhost:5000/users/register', user).then((res) => console.log(res.data));
-      window.location = '/login';
+    axios.post('http://localhost:5000/users/login', user).then((res) => console.log(res.data));
+
     this.setState({
-      username: '',
       email: '',
       password: '',
     });
@@ -58,22 +50,14 @@ export default class CreateUser extends Component {
   render() {
     return (
       <div>
-        <h3>Sign Up</h3>
+        <h3>Log In</h3>
         <form onSubmit={this.onSubmit}>
-          <div>
-            <input
-              type='text'
-              value={this.state.username}
-              onChange={this.onChangeUsername}
-              placeholder='Username'
-            />
-          </div>
           <div>
             <input
               type='email'
               required
               value={this.state.email}
-              onChange={this.onChangeEmail}
+              onChange={this.inputEmail}
               placeholder='Email'
             />
           </div>
@@ -81,14 +65,18 @@ export default class CreateUser extends Component {
             <input
               type='password'
               value={this.state.password}
-              onChange={this.onChangePassword}
+              onChange={this.inputPassword}
               placeholder='Password'
             />
           </div>
           <div>
-            <input type='submit' value='Create Account' />
+            <input type='submit' value='Log In' />
           </div>
         </form>
+        <p>Not registered yet?</p>
+        <Link to='/register'>
+          <button>Register</button>
+        </Link>
       </div>
     );
   }

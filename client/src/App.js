@@ -1,18 +1,18 @@
-import "./App.css";
-import UserProfile from "./components/user-profile/user-profile.js";
+import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import EditUser from "./components/edit-user.component";
-import CreateUser from "./components/create-user.components.js";
-import Login from "./components/login.components.js";
+import UserProfile from './components/user-profile/user-profile.js';
+import EditUser from './components/user-profile/edit-user';
+import CreateUser from './components/user-profile/register-user';
+import Login from './components/user-profile/login-user';
 
 function App() {
   return (
     <Router>
-      <Route path="/signup" component={CreateUser} />
-      <Route path="/edit/:id" component={EditUser} />
-      <Route path="/profile/:userId" component={UserProfile} />
-      <Route path="/login" component={Login} />
+      <Route path='/register' component={CreateUser} />
+      <Route path='/edit/:id' component={EditUser} />
+      <Route path='/profile/:userId' component={UserProfile} />
+      <Route path='/login' component={Login} />
     </Router>
   );
 }

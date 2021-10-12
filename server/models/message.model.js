@@ -1,24 +1,15 @@
-const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const messageSchema = new Schema(
-  {
-    name: {
-      type: String,
-      // required: [true, "a name is required"],
-      // minlength: 3,
-    },
-    email: {
-      type: String,
-    },
-    message: {
-      type: String,
-      // minlength: [8, "minimum 8 characters"],
-    },
+const MessageSchema = new Schema({
+  message: {
+    type: String,
+    required: [true, "cannot send empty message"],
+    trim: true,
   },
-  { timestamps: true }
-);
+  from: {
+    type: String,
+    trim: true,
+  },
+});
 
-const Message = mongoose.model("Message", messageSchema);
-
-module.exports = Message;
+export default mongoose.model("Messages", MessageSchema);

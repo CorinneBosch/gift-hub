@@ -12,7 +12,7 @@ function App() {
   return (
     <Router>
       <div className="container">
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             {/* <a class="navbar-brand" href="https://codingthesmartway.com" target="_blank">
               <img src={logo} width="30" height="30" alt="CodingTheSmartWay.com" />
             </a> */}

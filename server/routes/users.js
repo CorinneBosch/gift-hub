@@ -76,4 +76,10 @@ userRouter.get('/logout', passport.authenticate(), (req, res) => {
   res.json({ user: { username: '', email: '' }, success: true });
 });
 
+userRouter.get('/:username', (req, res) => {
+  User.findOne({ username: `${req.params.username}` })
+    .then((user) => res.json(user))
+    .catch((err) => res.status(400).json('Error: ' + err));
+});
+
 module.exports = userRouter;

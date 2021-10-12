@@ -1,14 +1,28 @@
 const bcrypt = require('bcryptjs');
-const router = require('express').Router();
+const userRouter = require('express').Router();
+const JWT = require('jsonwebtoken');
+const passport = require('passport');
+
 let User = require('../models/user.model');
 
-router.route('/').get((req, res) => {
+const signToken = (userID) => {
+  return JWT.sign(
+    {
+      iss: 'GiftHub',
+      sub: userID,
+    },
+    'GiftHub',
+    { expiresIn: '1h' }
+  );
+};
+
+userRouter.route('/').get((req, res) => {
   User.find()
     .then((users) => res.json(users))
     .catch((err) => res.status(400).json('Error: ' + err));
 });
 
-router.route('/register').post((req, res) => {
+userRouter.route('/register').post((req, res) => {
   const { username, email, password } = req.body;
   bcrypt.hash(password, 12).then((hashpw) => {
     User.findOne({ username: username }).then((savedUser) => {
@@ -34,4 +48,4 @@ router.route('/register').post((req, res) => {
   });
 });
 
-module.exports = router;
+module.exports = userRouter;

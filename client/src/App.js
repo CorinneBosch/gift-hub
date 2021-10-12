@@ -23,7 +23,7 @@ function App() {
                   <Link to="/signup" className="nav-link">Register</Link>
                 </li>
                 <li className="navbar-item">
-                  <Link to="/" className="nav-link">Index</Link>
+                  <Link to="/login" className="nav-link">Login</Link>
                 </li>
               </ul>
             </div>

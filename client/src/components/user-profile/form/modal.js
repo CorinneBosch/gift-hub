@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import FocusTrap from 'focus-trap-react';
 import EditForm from './edit-profile-form.js';
-import PaymentForm from './payment-form.js';
+import PaymentForm from './form.js';
 
 export const Modal = ({
   onClickOutside,

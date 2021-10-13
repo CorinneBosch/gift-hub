@@ -87,8 +87,6 @@ export default class CreateUser extends Component {
     });
   }
 
-  // const [message, setMessage] = useState(null);
-
   render() {
     return (
       <div>

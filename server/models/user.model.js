@@ -1,34 +1,43 @@
-const mongoose = require("mongoose");
-const isValidEmail = require("validator").isEmail;
-// const { isEmail } = pkg;
+const mongoose = require('mongoose');
+const isValidEmail = require('validator').isEmail;
+
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
   {
+    firstname: {
+      type: String,
+      required: [true, "first name required"],
+      minlength: 1,
+    },
+    lastname: {
+      type: String,
+      required: [true, "last name required"],
+      minlength: 1,
+    },
     username: {
       type: String,
-      required: [true, "user name required"],
+      required: [true, 'user name required'],
       unique: true,
       trim: true,
       minlength: 3,
     },
     email: {
       type: String,
-      required: [true, "email required"],
+      required: [true, 'email required'],
       unique: true,
       trim: true,
-      // match: [/\S+@\S+\.\S+/, 'is invalid'],
-      validate: [isValidEmail, "Invalid email."],
+      validate: [isValidEmail, 'Invalid email.'],
     },
     password: {
       type: String,
-      required: [true, "password required"],
+      required: [true, 'password required'],
       trim: true,
-      minlength: [8, "minimum 8 characters"],
+      minlength: [8, 'minimum 8 characters'],
     },
     profilePicture: {
       type: String,
-      default: "",
+      default: '',
     },
     bio: {
       type: String,
@@ -37,13 +46,13 @@ const userSchema = new Schema(
     messages: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Messages",
+        ref: 'Messages',
       },
     ],
   },
   { timestamps: true }
 );
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;

@@ -15,6 +15,10 @@
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
     "react-stripe-checkout": "^2.6.3",
+<<<<<<< HEAD
+=======
+    "stripe": "^8.181.0",
+>>>>>>> b28685dad82567fd18dfda8e8fdf11c7bc46f0f9
     "web-vitals": "^1.0.1"
   },
   "scripts": {

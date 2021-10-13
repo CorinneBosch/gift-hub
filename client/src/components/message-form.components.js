@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { Component } from "react";
-
+import stripeForm from "./stripe.components";
 export default class MessageForm extends Component {
   constructor(props) {
     super(props);
@@ -71,7 +71,7 @@ export default class MessageForm extends Component {
   render() {
     return (
       <div>
-        <h3>Sign Up</h3>
+        <h3>Send Form</h3>
         <form onSubmit={this.onSubmit}>
           <div>
             <input
@@ -101,6 +101,7 @@ export default class MessageForm extends Component {
           <div>
             <input type="submit" value="Send Form" />
           </div>
+          <stripeForm></stripeForm>
         </form>
       </div>
     );

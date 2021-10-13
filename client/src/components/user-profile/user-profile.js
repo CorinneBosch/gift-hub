@@ -1,16 +1,20 @@
 import React from "react";
-import { Container } from "./form/container.js";
+import Container from "./form/container.js";
 
 const UserProfile = () => {
   const PaymentButtonText = "Buy me beer";
+  const EditButtonText = 'Edit profile';
   const onSubmit = (event) => {
     event.preventDefault(event);
-    console.log(event.target.email.value);
-    console.log(event.target.message.value);
+    // console.log(event.target.email.value);
+    // console.log(event.target.message.value);
   };
   return (
     <div className='title_section user_profile_title'>
       <div className="userProfile">
+        <div id='edit_profile' className='edit_profile_section'>
+        <Container buttonText={EditButtonText} onSubmit={onSubmit}/>
+        </div>
         <div className='profile_pic_section'>
 
           {/* Profile pic placeholder begin */}
@@ -30,8 +34,8 @@ const UserProfile = () => {
         {/* Bio pic placeholder begin */}
 
         </div>
-        <div className='payment_section'>
-          <Container PaymentButtonText={PaymentButtonText} onSubmit={onSubmit} />
+        <div id='payment' className='payment_section'>
+          <Container formType='payment' buttonText={PaymentButtonText} onSubmit={onSubmit}/>
         </div>
       </div>
     </div>

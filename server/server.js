@@ -1,9 +1,9 @@
-const express = require("express");
-const cors = require("cors");
-const mongoose = require("mongoose");
-const path = require("path");
+const express = require('express');
+const cors = require('cors');
+const mongoose = require('mongoose');
+const path = require('path');
 
-require("dotenv").config();
+require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -13,22 +13,22 @@ app.use(express.json());
 
 mongoose.connect(process.env.DB_URI);
 const connection = mongoose.connection;
-connection.on("error", console.error.bind(console, "connection error: "));
-connection.once("open", () => {
-  console.log("MongoDB database connection established successfully");
+connection.on('error', console.error.bind(console, 'connection error: '));
+connection.once('open', () => {
+  console.log('MongoDB database connection established successfully');
 });
 
-app.use(express.static(path.resolve(__dirname, "./client/build")));
+// app.use(express.static(path.resolve(__dirname, "./client/build")));
 
-app.get("*", function (request, response) {
-  response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
-});
+// app.get("*", function (request, response) {
+//   response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+// });
 
-const usersRouter = require("./routes/users");
-const stripeRouter = require("./routes/stripe");
+const usersRouter = require('./routes/users');
+const stripeRouter = require('./routes/stripe');
 
-app.use("/users", usersRouter);
-app.use("/checkout", stripeRouter);
+app.use('/users', usersRouter);
+app.use('/checkout', stripeRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);

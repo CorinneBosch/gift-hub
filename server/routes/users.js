@@ -66,7 +66,7 @@ userRouter.post("/login", (req, res) => {
           res
             .status(200)
             .json({ isAuthenticated: true, user: savedUser.username });
-          console.log("Login Successfull");
+          console.log("Login Successfull √");
         } else {
           return res.status(400).json("Error: " + "Invalid Email or password");
         }

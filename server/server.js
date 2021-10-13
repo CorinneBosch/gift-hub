@@ -11,7 +11,7 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(process.env.DB_URI);
+mongoose.connect("mongodb+srv://team-work-social:5678@cluster0.cfu7c.mongodb.net/work-social?retryWrites=true&w=majority");
 const connection = mongoose.connection;
 connection.on("error", console.error.bind(console, "connection error: "));
 connection.once("open", () => {

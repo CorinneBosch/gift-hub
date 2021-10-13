@@ -2,8 +2,9 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
+    "start": "nodemon server.js",
     "test": "jest"
   },
   "jest": {
@@ -25,6 +26,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.9",
     "passport": "^0.5.0",
+    "stripe": "^8.181.0",
     "validator": "^13.6.0"
   },
   "devDependencies": {

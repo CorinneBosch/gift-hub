@@ -57,9 +57,10 @@ export const messageForm = ({ onSubmit }) => {
         />
      </div>
      <button className="form-control btn btn-primary" type="submit">
-      Send
+         SEND
      </button>
-     </form>
+    </form>
+
        
      );
 };

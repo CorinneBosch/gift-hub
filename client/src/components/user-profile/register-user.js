@@ -36,7 +36,6 @@ export default class CreateUser extends Component {
     });
   }
 
-  is;
   onSubmit(e) {
     e.preventDefault();
 
@@ -48,11 +47,21 @@ export default class CreateUser extends Component {
 
     console.log(user.username);
 
-    axios.post('http://localhost:5000/users/register', user).then((res) => console.log(res.data));
+    axios
+      .post('http://localhost:5000/users/register', user)
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res.data);
+          window.location = '/login';
+        } else {
+          alert(res.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
     this.setState({ username: '', email: '', password: '' });
-
-    window.location = '/login';
   }
 
   // const [message, setMessage] = useState(null);

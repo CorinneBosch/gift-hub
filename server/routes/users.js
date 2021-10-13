@@ -38,7 +38,7 @@ userRouter.route('/register').post((req, res) => {
       newUser
         .save()
         .then((newUser) => {
-          res.json('User registered!');
+          res.status(200).json('User registered!');
           console.log(newUser.email);
         })
         .catch((err) => {

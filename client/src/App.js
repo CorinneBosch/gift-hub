@@ -17,6 +17,8 @@ function App() {
       <Route path='/register' component={CreateUser} />
       <Route path='/edit/:id' component={EditUser} />
       <Route path='/profile/:userId' component={UserProfile} />
+      {/* <Route path={`/${:username}`} component={PublicProfile} /> */}
+      {/* <Route path={`profile/${:id}`} component={Private} /> */}
       <Route path='/login' component={Login} />
       <Route path='/messages' component={Messages} />
     </Router>

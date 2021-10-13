@@ -63,7 +63,9 @@ userRouter.post('/login', (req, res) => {
           const token = signToken(savedUser._id);
           res.cookie('access_token', token, { httpOnly: true, sameSite: true });
           // res.json({ token: token });
-          res.status(200).json({ isAuthenticated: true, user: savedUser.username, token: token });
+          res
+            .status(200)
+            .json({ isAuthenticated: true, user: savedUser.username, token: token, _id: savedUser.id });
           console.log('Login Successfull');
         } else {
           return res.status(400).json('Error: ' + 'Invalid Email or password');
@@ -77,11 +79,11 @@ userRouter.get('/logout', passport.authenticate(), (req, res) => {
   res.clearCookie('unauthorized');
   res.json({ user: { username: '', email: '' }, success: true });
 });
-// 616689795098dc5b221c896e
-userRouter.get('/authenticated', passport.authenticate('jwt', { session: false }), (req, res) => {
-  const { username } = req.user;
-  res.status(200).json({ isAuthenticated: true, user: { username } });
-});
+
+// userRouter.get('/authenticated', passport.authenticate('jwt', { session: false }), (req, res) => {
+//   const { username } = req.user;
+//   res.status(200).json({ isAuthenticated: true, user: { username } });
+// });
 
 userRouter.get('/:username', (req, res) => {
   User.findOne({ username: `${req.params.username}` })
@@ -89,25 +91,25 @@ userRouter.get('/:username', (req, res) => {
     .catch((err) => res.status(400).json('Error: ' + err));
 });
 
-// not functioning anymore in Insomnia - used to this morning...
 userRouter.get('/profile/:id', (req, res) => {
   User.findById(req.params.id)
     .then((user) => res.json(user))
     .catch((err) => res.status(400).json('Error: ' + err));
 });
 
-// userRouter.get('/:id', async (req, res) => {
-//   // User.findById(req.params.id)
-//   //   .then((user) => res.json(user))
-//   //   .catch((err) => res.status(400).json('Error: ' + err));
-//   try {
-//     const user = await User.findOne({ _id: req.params.id });
-//     res.send(user);
-//   } catch {
-//     res.status(404);
-//     res.send({ error: "User doesn't exist!" });
-//   }
-// });
+userRouter.get('/update/:id', (req, res) => {
+  User.findById(req.params.id)
+    .then((user) => {
+      user.profilePicture = req.body.profilePicture;
+      user.bio = req.body.bio;
+
+      user
+        .save()
+        .then(() => res.json('User updated!'))
+        .catch((err) => res.status(400).json('Error: ' + err));
+    })
+    .catch((err) => res.status(400).json('Error: ' + err));
+});
 
 userRouter.delete('/:id', (req, res) => {
   User.findByIdAndDelete(req.params.id)

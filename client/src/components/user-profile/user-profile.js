@@ -7,7 +7,7 @@ class UserProfile extends React.Component {
   constructor(props) {
     // const [PaymentButtonText, buttonRef, showModal] = React.useState();
     super(props);
-    this.state = { value: "coconut" };
+    this.state = { value: " " };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,10 +18,11 @@ class UserProfile extends React.Component {
   }
 
   handleSubmit(event) {
-    alert("Your gift is " + this.state.item + " :)");
+    alert('The gift you picked: '+ this.state.value);
     event.preventDefault();
+    window.location = "/m-form";
   }
-
+ 
   // const UserId = Cookies.get('id')
 
   onSubmit = (event) => {
@@ -63,31 +64,30 @@ class UserProfile extends React.Component {
 
             {/* Bio pic placeholder begin */}
           </div>
-
-          <form onSubmit={this.handleSubmit}>
-            <div id="payment" className="payment_section">
+          <div id="payment" className="payment_section">
               <Container
                 formType="payment"
                 buttonText={PaymentButtonText}
                 onSubmit={this.onSubmit}
               />
-            </div>
+          </div>
+          <form onSubmit={this.handleSubmit}>
             <label>
               Pick your gift:
               <select value={this.state.value} onChange={this.handleChange}>
-                <option value="3" item="muffin">
-                  🧁
+              <option value="🧁 $3">
+                  🧁 
                 </option>
-                <option value="5" item="coffee">
+                <option value="🍸 $5">
                 🍸
                 </option>
-                <option value="10" item="donut">
+                <option value="🍩 $8">
                   🍩
                 </option>
-                <option value="15" item="cake">
+                <option value="🎂 $10">
                   🎂
                 </option>
-                <option value="20" item="trip">
+                <option value="🍺 $12">
                   🍺
                 </option>
               </select>

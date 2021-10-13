@@ -10,6 +10,8 @@ import messageForm from './components/message-form.components.js';
 import Navbar from './components/navbar.js';
 import Messages from './components/messages';
 import Form from './components/stripe.components.js';
+import Cookies from 'js-cookie';
+const Username = Cookies.get('username');
 
 function App() {
   return (
@@ -17,7 +19,7 @@ function App() {
       <Navbar />
       {/* <Route path='/' component={Home} /> */}
       <Route path='/register' component={CreateUser} />
-      <Route path='/edit/:id' component={EditUser} />
+      <Route path={`/edit/${Username}`} component={EditUser} />
       <Route path='/profile/:userId' component={UserProfile} />
       {/* <Route path={`/${:username}`} component={PublicProfile} /> */}
       {/* <Route path={`profile/${:id}`} component={Private} /> */}

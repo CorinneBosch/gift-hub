@@ -20,7 +20,7 @@ router.route("/send").post((req, res) => {
 
   newMessage
     .save()
-    .then(() => res.json("Message sent!"))
+    .then(() => res.status(200).json("Message sent!"))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 

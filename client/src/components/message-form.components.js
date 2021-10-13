@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 import StripeToken from "./stripe.components";
+import { Redirect } from "react-router-dom";
 
 export default class MessageForm extends Component {
   constructor(props) {
@@ -52,7 +53,7 @@ export default class MessageForm extends Component {
       .then((res) => {
         if (res.status === 200) {
           console.log(res.data);
-          window.location = "/login";
+          window.location = "/p-form";
         } else {
           alert(res.data);
         }
@@ -100,9 +101,8 @@ export default class MessageForm extends Component {
             />
           </div>
           <div>
-            <input type="submit" value="Send Form" />
+            <input type="submit" value="Send Form" Redirect to="/p-form" />
           </div>
-          <StripeToken />
         </form>
       </div>
     );

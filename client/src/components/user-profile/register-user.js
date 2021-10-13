@@ -65,11 +65,12 @@ export default class CreateUser extends Component {
     console.log(user.username);
 
     axios
-      .post('http://localhost:5000/users/register', user)
+      .post("http://localhost:5000/users/register", user)
       .then((res) => {
         if (res.status === 200) {
+          console.log(res.data.user);
           console.log(res.data);
-          window.location = '/login';
+          window.location = "/login";
         } else {
           alert(res.data);
         }
@@ -96,7 +97,6 @@ export default class CreateUser extends Component {
             <input
               type='text'
               required
-              type='text'
               value={this.state.firstname}
               onChange={this.onChangeFirstName}
               placeholder='First name'
@@ -104,15 +104,17 @@ export default class CreateUser extends Component {
           </div>
           <div>
             <input
-              type='text'
+              type="text"
+              required
               value={this.state.lastname}
               onChange={this.onChangeLastName}
-              placeholder='Last name'
+              placeholder="Last Name"
             />
           </div>
           <div>
             <input
-              type='text'
+              type="text"
+              required
               value={this.state.username}
               onChange={this.onChangeUsername}
               placeholder='Username'
@@ -129,7 +131,8 @@ export default class CreateUser extends Component {
           </div>
           <div>
             <input
-              type='password'
+              type="password"
+              required
               value={this.state.password}
               onChange={this.onChangePassword}
               placeholder='Password'
@@ -140,7 +143,7 @@ export default class CreateUser extends Component {
           </div>
         </form>
         <p>Already have an account?</p>
-        <Link to='/login'>
+        <Link to="/login">
           <button>Log In</button>
         </Link>
       </div>

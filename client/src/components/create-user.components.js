@@ -12,6 +12,8 @@ export default class CreateUser extends Component {
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
+      firstname: "",
+      lastname: "",
       username: "",
       email: "",
       password: "",
@@ -52,6 +54,8 @@ export default class CreateUser extends Component {
     e.preventDefault();
 
     const user = {
+      firstname: this.state.firstname,
+      lastname: this.state.lastname,
       username: this.state.username,
       email: this.state.email,
       password: this.state.password,

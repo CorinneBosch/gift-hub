@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Container from './form/container.js';
 import axios from 'axios';
 import Cookies from 'js-cookie';
@@ -20,9 +19,6 @@ const UserProfile = () => {
     <div className='title_section user_profile_title'>
       <div className='userProfile'>
         <div id='edit_profile' className='edit_profile_section'>
-          <Link to={`/edit/${Username}`}>
-            <button>Edit Profile Route</button>
-          </Link>
           <Container buttonText={EditButtonText} onSubmit={onSubmit} />
         </div>
         <div className='profile_pic_section'>

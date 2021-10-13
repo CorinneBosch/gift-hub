@@ -2,7 +2,6 @@ import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import UserProfile from './components/user-profile/user-profile.js';
-import EditUser from './components/user-profile/edit-user';
 import CreateUser from './components/user-profile/register-user';
 import Login from './components/user-profile/login-user';
 // import Home from './components/home';
@@ -21,7 +20,6 @@ function App() {
       <Navbar />
       {/* <Route path='/' component={Home} /> */}
       <Route path='/register' component={CreateUser} />
-      <Route path={`/edit/${Username}`} component={EditUser} />
       <Route path={`/${Username}`} component={UserProfile} />
       {/* <Route path={`/edit/${UserId}`} component={Private} /> */}
       <Route path='/login' component={Login} />

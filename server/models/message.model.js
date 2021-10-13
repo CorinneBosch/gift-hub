@@ -1,15 +1,28 @@
+const mongoose = require("mongoose");
+
+const isValidEmail = require("validator").isEmail;
+
 const Schema = mongoose.Schema;
 
-const MessageSchema = new Schema({
-  message: {
+const messageSchema = new Schema({
+  name: {
     type: String,
     required: [true, "cannot send empty message"],
     trim: true,
   },
-  from: {
+  email: {
     type: String,
+    required: [true, "email required"],
     trim: true,
+    // match: [/\S+@\S+\.\S+/, 'is invalid'],
+    validate: [isValidEmail, "Invalid email."],
+  },
+  message: {
+    type: String,
+    required: [true, "cannot send empty message"],
   },
 });
 
-export default mongoose.model("Messages", MessageSchema);
+const Message = mongoose.model("Message", messageSchema);
+
+module.exports = Message;

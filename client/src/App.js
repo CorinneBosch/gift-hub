@@ -9,7 +9,7 @@ import Home from './components/home';
 import messageForm from "./components/message-form.components.js";
 import Navbar from "./components/navbar.js";
 import Messages from "./components/messages";
-import Form from "./components/stripe.components.js"
+import stripeForm from "./components/stripe.components.js"
 
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
       <Route path='/login' component={Login} />
       <Route path="/messages" component={Messages} />
       <Route path="/m-form" component={messageForm} />
-      <Route path="/p-form" component={Form} />
+      <Route path="/p-form" component={stripeForm} />
     </Router>
   );
 }

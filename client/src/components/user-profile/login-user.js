@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 export default class Login extends Component {
   constructor(props) {
@@ -43,6 +44,7 @@ export default class Login extends Component {
       .post('http://localhost:5000/users/login', user)
       .then((req, res) => {
         if (req.status === 200) {
+          Cookies.set('username', `${req.data.name}`)
           console.log(req.data)
           window.location = '/profile/:userId';
         } else {

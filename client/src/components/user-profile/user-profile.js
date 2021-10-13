@@ -1,10 +1,12 @@
 import React from "react";
 import Container from "./form/container.js";
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const UserProfile = () => {
   const PaymentButtonText = "Buy me beer";
   const EditButtonText = 'Edit profile';
+  const Username = Cookies.get('username')
   const onSubmit = (event) => {
     event.preventDefault(event);
     // console.log(event.target.email.value);

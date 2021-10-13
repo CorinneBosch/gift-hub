@@ -1,6 +1,33 @@
-import React from "react";
+// import React from "react";
+import StripeCheckout from "react-stripe-checkout";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+const KEY =
+  "pk_test_51Jj97mFjKtpO9Sxr3ooea52A6mRUwCAMAsFfSmkqQwiLRq2y2krLim9DeUOASuZwBPtYCSXvX5Nj2X3Lf0VfvHKB00r77vAAZ1";
 
 export const Form = ({ onSubmit }) => {
+  const [stripeToken, setStripeToken] = useState(null);
+
+  const onToken = (token) => {
+    setStripeToken(token);
+  };
+
+  useEffect(() => {
+    const makeRequest = async () => {
+      try {
+        const res = await axios.post("http://localhost:5000/checkout/payment", {
+          tokenId: stripeToken.id,
+          amount: 500,
+        });
+        console.log(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    stripeToken && makeRequest();
+  }, [stripeToken]);
+
   return (
     <form onSubmit={onSubmit}>
       <div className="form-group">
@@ -31,9 +58,19 @@ export const Form = ({ onSubmit }) => {
         />
       </div>
       <div className="form-group">
-        <button className="form-control btn btn-primary" type="submit">
-          Send
-        </button>
+        <StripeCheckout
+          name="onlyGifts"
+          image=""
+          email
+          description="Your total is £5"
+          amount={500}
+          token={onToken}
+          stripeKey={KEY}
+        >
+          <button className="form-control btn btn-primary" type="submit">
+            Send
+          </button>
+        </StripeCheckout>
       </div>
     </form>
   );

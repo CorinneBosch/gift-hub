@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 export default class CreateUser extends Component {
   constructor(props) {
@@ -13,11 +13,11 @@ export default class CreateUser extends Component {
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      firstname: "",
-      lastname: "",
-      username: "",
-      email: "",
-      password: "",
+      firstname: '',
+      lastname: '',
+      username: '',
+      email: '',
+      password: '',
     };
   }
 
@@ -65,20 +65,21 @@ export default class CreateUser extends Component {
     console.log(user.username);
 
     axios
-      .post("http://localhost:5000/users/register", user)
+      .post('http://localhost:5000/users/register', user)
       .then((res) => {
         if (res.status === 200) {
           console.log(res.data);
-          window.location = "/login";
+          window.location = '/login';
         } else {
           alert(res.data);
         }
       })
       .catch((error) => {
+        alert(error);
         console.log(error);
       });
 
-    this.setState({ username: "", email: "", password: "" });
+    this.setState({ username: '', email: '', password: '' });
   }
 
   // const [message, setMessage] = useState(null);
@@ -90,37 +91,56 @@ export default class CreateUser extends Component {
         <form onSubmit={this.onSubmit}>
           <div>
             <input
-              type="text"
+              type='text'
+              required
+              type='text'
+              value={this.state.firstname}
+              onChange={this.onChangeFirstName}
+              placeholder='First name'
+            />
+          </div>
+          <div>
+            <input
+              type='text'
+              required
+              value={this.state.lastname}
+              onChange={this.onChangeLastName}
+              placeholder='Last name'
+            />
+          </div>
+          <div>
+            <input
+              type='text'
               required
               value={this.state.username}
               onChange={this.onChangeUsername}
-              placeholder="Username"
+              placeholder='Username'
             />
           </div>
           <div>
             <input
-              type="email"
+              type='email'
               required
               value={this.state.email}
               onChange={this.onChangeEmail}
-              placeholder="Email"
+              placeholder='Email'
             />
           </div>
           <div>
             <input
-              type="password"
+              type='password'
               required
               value={this.state.password}
               onChange={this.onChangePassword}
-              placeholder="Password"
+              placeholder='Password'
             />
           </div>
           <div>
-            <input type="submit" value="Create Account" />
+            <input type='submit' value='Create Account' />
           </div>
         </form>
         <p>Already have an account?</p>
-        <Link to="/login">
+        <Link to='/login'>
           <button>Log In</button>
         </Link>
       </div>

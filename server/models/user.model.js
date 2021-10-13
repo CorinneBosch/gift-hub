@@ -5,6 +5,18 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
   {
+    first_name: {
+      type: String,
+      required: [true, "first name required"],
+      trim: true,
+      minlength: 1,
+    },
+    last_name: {
+      type: String,
+      required: [true, "last name required"],
+      trim: true,
+      minlength: 1,
+    },
     username: {
       type: String,
       required: [true, "user name required"],

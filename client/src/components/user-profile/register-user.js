@@ -1,11 +1,6 @@
-<<<<<<< HEAD:client/src/components/user-profile/register-user.js
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-=======
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
->>>>>>> main:client/src/components/create-user.components.js
 
 export default class CreateUser extends Component {
   constructor(props) {
@@ -70,12 +65,11 @@ export default class CreateUser extends Component {
     console.log(user.username);
 
     axios
-<<<<<<< HEAD:client/src/components/user-profile/register-user.js
-      .post('http://localhost:5000/users/register', user)
+      .post("http://localhost:5000/users/register", user)
       .then((res) => {
         if (res.status === 200) {
           console.log(res.data);
-          window.location = '/login';
+          window.location = "/login";
         } else {
           alert(res.data);
         }
@@ -84,19 +78,7 @@ export default class CreateUser extends Component {
         console.log(error);
       });
 
-    this.setState({ username: '', email: '', password: '' });
-=======
-      .post("http://localhost:5000/users/register", user)
-      .then((res) => console.log(res.data));
-    window.location = "/login";
-    this.setState({
-      firstname: "",
-      lastname: "",
-      username: "",
-      email: "",
-      password: "",
-    });
->>>>>>> main:client/src/components/create-user.components.js
+    this.setState({ username: "", email: "", password: "" });
   }
 
   // const [message, setMessage] = useState(null);
@@ -108,28 +90,8 @@ export default class CreateUser extends Component {
         <form onSubmit={this.onSubmit}>
           <div>
             <input
-<<<<<<< HEAD:client/src/components/user-profile/register-user.js
-              type='text'
+              type="text"
               required
-=======
-              type="text"
-              value={this.state.firstname}
-              onChange={this.onChangeFirstName}
-              placeholder="First name"
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              value={this.state.lastname}
-              onChange={this.onChangeLastName}
-              placeholder="Last name"
-            />
-          </div>
-          <div>
-            <input
-              type="text"
->>>>>>> main:client/src/components/create-user.components.js
               value={this.state.username}
               onChange={this.onChangeUsername}
               placeholder="Username"
@@ -146,12 +108,8 @@ export default class CreateUser extends Component {
           </div>
           <div>
             <input
-<<<<<<< HEAD:client/src/components/user-profile/register-user.js
-              type='password'
-              required
-=======
               type="password"
->>>>>>> main:client/src/components/create-user.components.js
+              required
               value={this.state.password}
               onChange={this.onChangePassword}
               placeholder="Password"
@@ -162,7 +120,7 @@ export default class CreateUser extends Component {
           </div>
         </form>
         <p>Already have an account?</p>
-        <Link to='/login'>
+        <Link to="/login">
           <button>Log In</button>
         </Link>
       </div>

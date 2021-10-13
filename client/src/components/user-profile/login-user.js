@@ -44,7 +44,7 @@ export default class Login extends Component {
       .post('http://localhost:5000/users/login', user)
       .then((req, res) => {
         if (req.status === 200) {
-          Cookies.set('username', `${req.data.name}`)
+          Cookies.set('username', `${req.data.user}`)
           console.log(req.data)
           window.location = '/profile/:userId';
         } else {

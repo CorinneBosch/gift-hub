@@ -6,7 +6,10 @@ import Cookies from 'js-cookie';
 const UserProfile = () => {
   const PaymentButtonText = "Buy me beer";
   const EditButtonText = 'Edit profile';
+
   const Username = Cookies.get('username')
+  // const UserId = Cookies.get('id')
+  
   const onSubmit = (event) => {
     event.preventDefault(event);
     // console.log(event.target.email.value);

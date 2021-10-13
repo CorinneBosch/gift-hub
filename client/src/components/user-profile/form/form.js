@@ -63,7 +63,7 @@ export const Form = ({ onSubmit }) => {
           image=""
           email
           description="Your total is £5"
-          amount={500}
+          amount={1000}
           token={onToken}
           stripeKey={KEY}
         >

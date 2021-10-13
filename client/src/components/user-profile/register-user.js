@@ -69,7 +69,6 @@ export default class CreateUser extends Component {
       .then((res) => {
         if (res.status === 200) {
           console.log(res.data.user);
-          console.log(res.data);
           window.location = '/login';
         } else {
           alert(res.data);

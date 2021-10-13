@@ -63,10 +63,8 @@ userRouter.post('/login', (req, res) => {
           const token = signToken(savedUser._id);
           res.cookie('access_token', token, { httpOnly: true, sameSite: true });
           // res.json({ token: token });
-          res
-            .status(200)
-            .json({ isAuthenticated: true, user: savedUser.username, _id: savedUser.id });
-          console.log("Login Successfull √");
+          res.status(200).json({ isAuthenticated: true, user: savedUser.username, _id: savedUser.id });
+          console.log('Login Successfull √');
         } else {
           return res.status(400).json('Error: ' + 'Invalid Email or password');
         }
@@ -80,11 +78,6 @@ userRouter.get('/logout', passport.authenticate(), (req, res) => {
   res.json({ user: { username: '', email: '' }, success: true });
 });
 
-// userRouter.get('/authenticated', passport.authenticate('jwt', { session: false }), (req, res) => {
-//   const { username } = req.user;
-//   res.status(200).json({ isAuthenticated: true, user: { username } });
-// });
-
 userRouter.get('/:username', (req, res) => {
   User.findOne({ username: `${req.params.username}` })
     .then((user) => res.json(user))
@@ -97,7 +90,7 @@ userRouter.get('/profile/:id', (req, res) => {
     .catch((err) => res.status(400).json('Error: ' + err));
 });
 
-userRouter.get('/update/:id', (req, res) => {
+userRouter.post('/update/:id', (req, res) => {
   User.findById(req.params.id)
     .then((user) => {
       user.profilePicture = req.body.profilePicture;
@@ -105,7 +98,10 @@ userRouter.get('/update/:id', (req, res) => {
 
       user
         .save()
-        .then(() => res.json('User updated!'))
+        .then(() => {
+          res.status(200).json('User updated!');
+          console.log('Changed profile');
+        })
         .catch((err) => res.status(400).json('Error: ' + err));
     })
     .catch((err) => res.status(400).json('Error: ' + err));
@@ -114,24 +110,6 @@ userRouter.get('/update/:id', (req, res) => {
 userRouter.delete('/:id', (req, res) => {
   User.findByIdAndDelete(req.params.id)
     .then(() => res.json('User profile deleted.'))
-    .catch((err) => res.status(400).json('Error: ' + err));
-});
-
-userRouter.post('/update/:id', (req, res) => {
-  User.findOne(req.params.id)
-    .then((user) => {
-      user.firstname = req.body.firstname;
-      user.lastname = req.body.lastname;
-      user.username = req.body.username;
-      user.email = req.body.email;
-      user.profilePicture = req.body.profilePicture;
-      user.bio = req.body.bio;
-
-      user
-        .save()
-        .then(() => res.json('User updated!'))
-        .catch((err) => res.status(400).json('Error: ' + err));
-    })
     .catch((err) => res.status(400).json('Error: ' + err));
 });
 

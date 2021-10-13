@@ -4,14 +4,13 @@ const mongoose = require('mongoose');
 const path = require('path');
 
 require('dotenv').config();
-
-const usersRouter = require('./routes/users');
-
-
 const app = express();
+const port = process.env.PORT || 5000
 
 app.use(cors());
 app.use(express.json());
+
+const usersRouter = require('./routes/users');
 
 mongoose.connect(process.env.DB_URI);
 const connection = mongoose.connection;
@@ -21,10 +20,14 @@ connection.once('open', () => {
 });
 
 app.use(express.static(path.resolve(__dirname, "./client/build")));
-// Step 2:
+
 app.get("*", function (request, response) {
   response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
 });
 app.use('/users', usersRouter);
+
+// app.listen(port, () => {
+//   console.log(`Server is running on port: ${port}`);
+// });
 
 module.exports = app;

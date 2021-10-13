@@ -46,7 +46,6 @@ export default class Login extends Component {
         if (req.status === 200) {
           Cookies.set('username', `${req.data.user}`)
           console.log(req.data)
-          window.location = '/profile/:userId';
         } else {
           alert(res.data); // make error visible to user
         }

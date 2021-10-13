@@ -19,8 +19,8 @@ const UserProfile = () => {
         <Container buttonText={EditButtonText} onSubmit={onSubmit}/>
         </div>
         <div className='profile_pic_section'>
-          <h1>{Username}</h1>
-          {console.log(Username)}
+          <h1>Hello, {Username}</h1>
+          {console.log(document.cookie)}
           {/* Profile pic placeholder begin */}
 
           <h1>This is the Profile picture section</h1>

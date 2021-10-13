@@ -1,10 +1,10 @@
 import React from "react";
-const PaymentButton = ({ PaymentButtonText, buttonRef }) => {
+const PaymentButton = ({ PaymentButtonText, buttonRef, showModal }) => {
   return (
     <button
       className="btn btn-lg center modal-button"
       ref={buttonRef}
-      onClick={}
+      onClick={showModal}
     >
       {PaymentButtonText}
     </button>

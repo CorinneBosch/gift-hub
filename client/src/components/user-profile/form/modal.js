@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import FocusTrap from 'focus-trap-react';
 import EditForm from './edit-profile-form.js';
-
+import Form from './form.js';
 
 export const Modal = ({
   onClickOutside,
@@ -41,7 +41,7 @@ export const Modal = ({
           </button>
           <div className="modal-body">
             { formType === 'payment'
-              ? <PaymentForm onSubmit={onSubmit} />
+              ? <Form onSubmit={onSubmit} />
               : <EditForm onSubmit={onSubmit}/>
             }
             

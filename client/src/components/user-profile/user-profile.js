@@ -78,17 +78,17 @@ class UserProfile extends React.Component {
                 <option value="3" item="muffin">
                   🧁
                 </option>
-                <option value="5" item="coffee">
+                <option value="5" item="comartini">
                   🍸
                 </option>
-                <option value="10" item="cocktail">
-                  £10
+                <option value="10" item="donut">
+                  🍩
                 </option>
-                <option value="15" item="tickets">
-                  £15
+                <option value="15" item="cake">
+                  🎂
                 </option>
-                <option value="20" item="trip">
-                  £20
+                <option value="20" item="beer">
+                  🍺
                 </option>
               </select>
             </label>

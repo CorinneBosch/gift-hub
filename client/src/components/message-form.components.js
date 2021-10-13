@@ -51,7 +51,7 @@ export default class MessageForm extends Component {
       .then((res) => {
         if (res.status === 200) {
           console.log(res.data);
-          window.location = "/login";
+          window.location = "/p-form";
         } else {
           alert(res.data);
         }

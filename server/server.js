@@ -1,15 +1,18 @@
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
-const path = require('path');
-
-require('dotenv').config();
+const express = require("express");
+const cors = require("cors");
+const mongoose = require("mongoose");
+const path = require("path");
+const striperoutes = require("./routes/stripe");
+require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use("/api/stripe", striperoutes);
+
 
 mongoose.connect(process.env.DB_URI);
 const connection = mongoose.connection;
@@ -24,11 +27,14 @@ connection.once('open', () => {
 //   response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
 // });
 
-const usersRouter = require('./routes/users');
-const stripeRouter = require('./routes/stripe');
+const userRouter = require("./routes/users");
+const stripeRouter = require("./routes/stripe");
+const messageRouter = require("./routes/messages");
 
-app.use('/users', usersRouter);
-app.use('/checkout', stripeRouter);
+app.use("/users", userRouter);
+app.use("/checkout", stripeRouter);
+app.use("/messages", messageRouter);
+
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);

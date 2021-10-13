@@ -1,10 +1,15 @@
 import React from 'react';
 import Container from './form/container.js';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const UserProfile = () => {
   const PaymentButtonText = 'Buy me beer';
   const EditButtonText = 'Edit profile';
+
+  const Username = Cookies.get('username');
+  // const UserId = Cookies.get('id')
+
   const onSubmit = (event) => {
     event.preventDefault(event);
     // console.log(event.target.email.value);
@@ -20,6 +25,8 @@ const UserProfile = () => {
           <Container buttonText={EditButtonText} onSubmit={onSubmit} />
         </div>
         <div className='profile_pic_section'>
+          <h1>Hello, {Username}</h1>
+          {console.log(document.cookie)}
           {/* Profile pic placeholder begin */}
 
           <h1>This is the Profile picture section</h1>

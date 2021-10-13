@@ -68,6 +68,7 @@ export default class CreateUser extends Component {
       .post('http://localhost:5000/users/register', user)
       .then((res) => {
         if (res.status === 200) {
+          console.log(res.data.user);
           console.log(res.data);
           window.location = '/login';
         } else {
@@ -111,6 +112,24 @@ export default class CreateUser extends Component {
           <div>
             <input
               type='text'
+              required
+              value={this.state.firstname}
+              onChange={this.onChangeFirstName}
+              placeholder="First name"
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              required
+              value={this.state.lastname}
+              onChange={this.onChangeLastName}
+              placeholder="Last Name"
+            />
+          </div>
+          <div>
+            <input
+              type="text"
               required
               value={this.state.username}
               onChange={this.onChangeUsername}

@@ -41,9 +41,9 @@ export default class Login extends Component {
 
     axios
       .post('http://localhost:5000/users/login', user)
-      .then((res) => {
-        if (res.status === 200) {
-          console.log(res.data);
+      .then((req, res) => {
+        if (req.status === 200) {
+          console.log(req.data)
           window.location = '/profile/:userId';
         } else {
           alert(res.data); // make error visible to user

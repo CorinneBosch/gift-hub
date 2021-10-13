@@ -1,5 +1,6 @@
 import React from "react";
 import Container from "./form/container.js";
+import axios from 'axios';
 
 const UserProfile = () => {
   const PaymentButtonText = "Buy me beer";

@@ -39,12 +39,21 @@ export default class Login extends Component {
 
     console.log(user.email);
 
-    axios.post('http://localhost:5000/users/login', user).then((res) => console.log(res.data));
+    axios
+      .post('http://localhost:5000/users/login', user)
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res.data);
+          window.location = '/profile/:userId';
+        } else {
+          alert(res.data); // make error visible to user
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
-    this.setState({
-      email: '',
-      password: '',
-    });
+    this.setState({ email: '', password: '' });
   }
 
   render() {

@@ -51,7 +51,7 @@ export default class MessageForm extends Component {
       .then((res) => {
         if (res.status === 200) {
           console.log(res.data);
-          window.location = "/p-form";
+          // window.location = "/p-form";
         } else {
           alert(res.data);
         }
@@ -66,6 +66,7 @@ export default class MessageForm extends Component {
       email: "",
       message: "",
     });
+    window.location = "/p-form";
   }
 
   render() {
@@ -101,7 +102,6 @@ export default class MessageForm extends Component {
           <div>
             <input type="submit" value="Send Form" />
           </div>
-          <stripeForm></stripeForm>
         </form>
       </div>
     );

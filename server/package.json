@@ -23,6 +23,8 @@
     "express": "^4.17.1",
     "jest": "^27.2.4",
     "mongoose": "^6.0.9",
+    "stripe": "^8.181.0",
+    "uuid": "^8.3.2",
     "validator": "^13.6.0"
   },
   "devDependencies": {

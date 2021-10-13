@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
-
+const striperoutes = require('./routes/stripe');
 require('dotenv').config();
 
 const app = express();
@@ -11,7 +11,9 @@ const port = process.env.PORT || 5000
 
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
+app.use('/api/stripe', striperoutes);
 const usersRouter = require('./routes/users');
 
 mongoose.connect(process.env.DB_URI);
@@ -28,7 +30,6 @@ app.get("*", function (request, response) {
   response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
 });
 
-const usersRouter = require("./routes/users");
 const stripeRouter = require("./routes/stripe");
 
 app.use("/users", usersRouter);

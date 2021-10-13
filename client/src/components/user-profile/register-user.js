@@ -1,5 +1,11 @@
+<<<<<<< HEAD:client/src/components/user-profile/register-user.js
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+=======
 import React, { Component } from "react";
 import axios from "axios";
+>>>>>>> main:client/src/components/create-user.components.js
 
 export default class CreateUser extends Component {
   constructor(props) {
@@ -61,9 +67,25 @@ export default class CreateUser extends Component {
       password: this.state.password,
     };
 
-    console.log(user);
+    console.log(user.username);
 
     axios
+<<<<<<< HEAD:client/src/components/user-profile/register-user.js
+      .post('http://localhost:5000/users/register', user)
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res.data);
+          window.location = '/login';
+        } else {
+          alert(res.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    this.setState({ username: '', email: '', password: '' });
+=======
       .post("http://localhost:5000/users/register", user)
       .then((res) => console.log(res.data));
     window.location = "/login";
@@ -74,7 +96,10 @@ export default class CreateUser extends Component {
       email: "",
       password: "",
     });
+>>>>>>> main:client/src/components/create-user.components.js
   }
+
+  // const [message, setMessage] = useState(null);
 
   render() {
     return (
@@ -83,6 +108,10 @@ export default class CreateUser extends Component {
         <form onSubmit={this.onSubmit}>
           <div>
             <input
+<<<<<<< HEAD:client/src/components/user-profile/register-user.js
+              type='text'
+              required
+=======
               type="text"
               value={this.state.firstname}
               onChange={this.onChangeFirstName}
@@ -100,6 +129,7 @@ export default class CreateUser extends Component {
           <div>
             <input
               type="text"
+>>>>>>> main:client/src/components/create-user.components.js
               value={this.state.username}
               onChange={this.onChangeUsername}
               placeholder="Username"
@@ -116,7 +146,12 @@ export default class CreateUser extends Component {
           </div>
           <div>
             <input
+<<<<<<< HEAD:client/src/components/user-profile/register-user.js
+              type='password'
+              required
+=======
               type="password"
+>>>>>>> main:client/src/components/create-user.components.js
               value={this.state.password}
               onChange={this.onChangePassword}
               placeholder="Password"
@@ -126,6 +161,10 @@ export default class CreateUser extends Component {
             <input type="submit" value="Create Account" />
           </div>
         </form>
+        <p>Already have an account?</p>
+        <Link to='/login'>
+          <button>Log In</button>
+        </Link>
       </div>
     );
   }

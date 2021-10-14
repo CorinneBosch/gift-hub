@@ -20,8 +20,7 @@ export const Register = () => {
       .min(4, 'Username must be at least 4 characters')
       .max(15, 'Must be 15 characters or less')
       .matches(/^[aA-zZ\s]+$/, 'Only alphabets are allowed for this field')
-      .matches(/^\s*$/, 'No white spaces allowed in username')
-      .matches(/^\S+$/, 'No white spaces allowed in username')
+      // .matches(/^\s*$/, 'No white spaces allowed in username')
       .required('Required'),
     email: Yup.string()
       .email('Email is invalid')
@@ -49,10 +48,6 @@ export const Register = () => {
     password: '',
     confirmPassword: '',
   };
-
-  // const onChange = (e) => {
-  //   setUser({ ...user, [e.target.name]: e.target.value });
-  // };
 
   const onSubmit = (values) => {
     axios

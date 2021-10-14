@@ -21,7 +21,7 @@ function App() {
       <Navbar />
       <Route path='/register' component={CreateUser} />
       <Route path={`/${Username}`} component={Private} />
-      <Route path='/profile/:username' component={UserProfile} />
+      <Route path='/user/:username' component={UserProfile} />
       <Route path='/login' component={Login} />
       <Route path='/messages' component={Messages} />
       {/* <Route path="/p-form" component={Form} /> */}

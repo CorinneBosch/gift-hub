@@ -21,9 +21,8 @@ const UserProfile = () => {
   const EditButtonText = 'Edit profile';
   console.log(UserProfile);
   const Username = Cookies.get('username');
-  // const UserId = Cookies.get('id')
 
-  const [link, setLink] = useState(`https://Heroku/${Username}`);
+  const [link, setLink] = useState(`https://only-gift.herokuapp.com/user/${Username}`);
   const [copySuccess, setCopySuccess] = useState('');
 
   const inputHandler = (event) => {

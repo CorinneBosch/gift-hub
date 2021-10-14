@@ -1,5 +1,7 @@
-import React from 'react';
+import '../../App.css';
 import Container from './form/container.js';
+import React, { useState } from 'react';
+
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
@@ -8,7 +10,19 @@ const UserProfile = () => {
   const EditButtonText = 'Edit profile';
 
   const Username = Cookies.get('username');
-  // const UserId = Cookies.get('id')
+    // const UserId = Cookies.get('id')
+
+  const [link, setLink] = useState(`https://Heroku/${Username}`);
+  const [copySuccess, setCopySuccess] = useState('');
+
+  const inputHandler = (event) => {
+    setLink(event.target.value);
+  };
+
+  const copy = () => {
+    navigator.clipboard.writeText(link);
+    setCopySuccess(`${link} Copied!`);
+  };
 
   const onSubmit = (event) => {
     event.preventDefault(event);
@@ -34,8 +48,13 @@ const UserProfile = () => {
             height='262px'
             border-radius='50%'
           />
-
-          {/* Profile pic placeholder end */}
+        </div>
+        <div className='copy_link'>
+          <input value={`https://Heroku/${Username}`} onChange={inputHandler} />
+          <button onClick={copy} disabled={!link}>
+            Copy & Share Link
+          </button>
+          {copySuccess}
         </div>
         <div className='bio_section'>
           {/* Bio placeholder begin */}

@@ -27,7 +27,7 @@ userRouter.route('/register').post((req, res) => {
   bcrypt.hash(password, 12).then((hashpw) => {
     User.findOne({ username }).then((savedUser) => {
       if (savedUser) {
-        return res.status(400).json({ username: 'usermname already exists' });
+        return res.status(401).json({ username: 'usermname already exists' });
       }
       const newUser = new User({
         firstname,
@@ -41,7 +41,7 @@ userRouter.route('/register').post((req, res) => {
         .save()
         .then((newUser) => {
           res.status(200).json('User registered!');
-          console.log(newUser.email);
+          console.log('Register Successfull √');
         })
         .catch((err) => {
           res.status(400).json('Error: ' + err);
@@ -62,7 +62,6 @@ userRouter.post('/login', (req, res) => {
         if (match) {
           const token = signToken(savedUser._id);
           res.cookie('access_token', token, { httpOnly: true, sameSite: true });
-          // res.json({ token: token });
           res.status(200).json({ isAuthenticated: true, user: savedUser.username, _id: savedUser.id });
           console.log('Login Successfull √');
         } else {
@@ -87,6 +86,12 @@ userRouter.get('/:username', (req, res) => {
 userRouter.get('/profile/:id', (req, res) => {
   User.findById(req.params.id)
     .then((user) => res.json(user))
+    .catch((err) => res.status(400).json('Error: ' + err));
+});
+
+userRouter.delete('/:id', (req, res) => {
+  User.findByIdAndDelete(req.params.id)
+    .then(() => res.json('User profile deleted.'))
     .catch((err) => res.status(400).json('Error: ' + err));
 });
 

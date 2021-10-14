@@ -61,7 +61,7 @@ userRouter.post('/login', (req, res) => {
       .then((match) => {
         if (match) {
           const token = signToken(savedUser._id);
-          res.cookie('access_token', token, { httpOnly: true, sameSite: true });
+          // res.cookie('access_token', token, { httpOnly: true, sameSite: true });
           // res.json({ token: token });
           res.status(200).json({ isAuthenticated: true, user: savedUser.username, _id: savedUser.id });
           console.log('Login Successfull √');

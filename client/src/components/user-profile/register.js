@@ -5,7 +5,7 @@ import { Input } from './form/input-field';
 import axios from 'axios';
 
 export const Register = () => {
-  const [user, setUser] = useState([]);
+  // const [user, setUser] = useState([]);
 
   const validate = Yup.object({
     firstname: Yup.string()
@@ -50,9 +50,9 @@ export const Register = () => {
     confirmPassword: '',
   };
 
-  const onChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
-  };
+  // const onChange = (e) => {
+  //   setUser({ ...user, [e.target.name]: e.target.value });
+  // };
 
   const onSubmit = (values) => {
     // e.preventDefault();

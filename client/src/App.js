@@ -1,5 +1,5 @@
-import './App.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import "./App.css";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import UserProfile from './components/user-profile/user-profile.js';
 import CreateUser from './components/user-profile/register-user';

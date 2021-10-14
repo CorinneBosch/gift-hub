@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+
+
 export default class UserProfile extends Component {
   constructor(props) {
       super(props);
@@ -26,6 +28,7 @@ export default class UserProfile extends Component {
 
   onSubmit(e) {
     e.preventDefault();
+    e.target.reset();
 
     const user = {
       textarea: this.state.textarea

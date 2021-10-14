@@ -37,8 +37,7 @@ class UserProfile extends React.Component {
 
   onSubmit = (event) => {
     event.preventDefault(event);
-    // console.log(event.target.email.value);
-    // console.log(event.target.message.value);
+    event.target.reset();
   };
 
   render() {

@@ -1,5 +1,5 @@
 const router = require("express").Router();
-let Message = require("../models/message.model");
+let Message = require("../models/MessageModel");
 
 router.post("/profile", (req, res) => {
   Message.find()

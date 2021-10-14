@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Modal from "./modal";
-import Button from "../paymentButton/base-button.js";
+import Modal from "./Modal";
+import Button from "../Form/paymentButton/base-button.js";
 
 export class Container extends Component {
   state = { isShown: false };

@@ -1,8 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import FocusTrap from 'focus-trap-react';
-import EditForm from './edit-profile-form.js';
-import Form from './form.js';
+import React from "react";
+import ReactDOM from "react-dom";
+import FocusTrap from "focus-trap-react";
+
+import EditForm from "./EditProfileForm";
+import Form from "./Form";
 
 export const Modal = ({
   onClickOutside,
@@ -11,7 +12,7 @@ export const Modal = ({
   buttonRef,
   closeModal,
   onSubmit,
-  formType
+  formType,
 }) => {
   return ReactDOM.createPortal(
     <FocusTrap>
@@ -40,11 +41,11 @@ export const Modal = ({
             </svg>
           </button>
           <div className="modal-body">
-            { formType === 'payment'
-              ? <Form onSubmit={onSubmit} />
-              : <EditForm onSubmit={onSubmit}/>
-            }
-            
+            {formType === "payment" ? (
+              <Form onSubmit={onSubmit} />
+            ) : (
+              <EditForm onSubmit={onSubmit} />
+            )}
           </div>
         </div>
       </aside>
@@ -52,6 +53,5 @@ export const Modal = ({
     document.body
   );
 };
-
 
 export default Modal;

@@ -1,7 +1,17 @@
 import React from "react";
 import Container from "./form/container.js";
-import axios from "axios";
+import Select from 'react-select';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Cookies from "js-cookie";
+
+const Gift = [
+  { label: "🧁", value: 5 },
+  { label: "🍸", value: 12 },
+  { label: "🎂", value: 10 },
+  { label: "🍩", value: 8 },
+  { label: "🍺", value: 15 },
+];
+
 
 class UserProfile extends React.Component {
   constructor(props) {
@@ -64,14 +74,18 @@ class UserProfile extends React.Component {
 
             {/* Bio pic placeholder begin */}
           </div>
-          <div id="payment" className="payment_section">
-              <Container
-                formType="payment"
-                buttonText={PaymentButtonText}
-                onSubmit={this.onSubmit}
-              />
+          < form onSubmit={this.handleSubmit}>
+           <div className="container">
+            <div className="row">
+            <div className="col-md-2"></div>
+            <div className="col-md-4">
+            <Select options={Gift}/>
           </div>
-          <form onSubmit={this.handleSubmit}>
+          <div className="col-md-4"></div>
+        </div>
+        </div>
+        </form>
+          {/* <form onSubmit={this.handleSubmit}>
             <label>
               Pick your gift:
               <select value={this.state.value} onChange={this.handleChange}>
@@ -91,9 +105,14 @@ class UserProfile extends React.Component {
                   🍺
                 </option>
               </select>
-            </label>
-            <input type="submit" value="Submit" />
-          </form>
+            </label> */}
+            <div id="payment" className="payment_section">
+              <Container
+                formType="payment"
+                buttonText={PaymentButtonText}
+                onSubmit={this.onSubmit}
+              />
+          </div>
         </div>
       </div>
     );

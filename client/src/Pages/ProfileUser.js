@@ -1,7 +1,7 @@
-import Container from "../Form/Container";
+import Container from "../components/Form/Container";
 import Select from 'react-select';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../../App.css';
+import '../App.css';
 import React, { useState } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';

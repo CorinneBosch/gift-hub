@@ -42,6 +42,7 @@ const userSchema = new Schema(
     bio: {
       type: String,
       maxlength: 250,
+      default: '',
     },
     messages: [
       {

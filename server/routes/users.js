@@ -61,8 +61,7 @@ userRouter.post('/login', (req, res) => {
       .then((match) => {
         if (match) {
           const token = signToken(savedUser._id);
-          // res.cookie('access_token', token, { httpOnly: true, sameSite: true });
-          // res.json({ token: token });
+          res.cookie('access_token', token, { httpOnly: true, sameSite: true });
           res.status(200).json({ isAuthenticated: true, user: savedUser.username, _id: savedUser.id });
           console.log('Login Successfull √');
         } else {
@@ -78,43 +77,44 @@ userRouter.get('/logout', passport.authenticate(), (req, res) => {
   res.json({ user: { username: '', email: '' }, success: true });
 });
 
-userRouter.get('/authenticated', passport.authenticate('jwt', { session: false }), (req, res) => {
-  const { username } = req.user;
-  res.status(200).json({ isAuthenticated: true, user: { username } });
-});
-
 userRouter.get('/:username', (req, res) => {
   User.findOne({ username: `${req.params.username}` })
     .then((user) => res.json(user))
     .catch((err) => res.status(400).json('Error: ' + err));
 });
 
-userRouter.get('/:id', (req, res) => {
-  User.findOne({ id_: `${req.params.id}` })
+userRouter.get('/profile/:id', (req, res) => {
+  User.findById(req.params.id)
     .then((user) => res.json(user))
     .catch((err) => res.status(400).json('Error: ' + err));
 });
 
-// not functioning anymore in Insomnia - used to this morning...
-// userRouter.delete('/:id', (req, res) => {
-//   User.findByIdAndDelete(req.params.id)
-//     .then(() => res.json('User profile deleted.'))
-//     .catch((err) => res.status(400).json('Error: ' + err));
-// });
+userRouter.delete('/:id', (req, res) => {
+  User.findByIdAndDelete(req.params.id)
+    .then(() => res.json('User profile deleted.'))
+    .catch((err) => res.status(400).json('Error: ' + err));
+});
 
-// needs validation again if username or validation is taken already
 userRouter.post('/update/:id', (req, res) => {
   User.findById(req.params.id)
     .then((user) => {
-      user.username = req.body.username;
-      user.email = req.body.email;
-      user.password = req.body.password;
+      user.profilePicture = req.body.profilePicture;
+      user.bio = req.body.bio;
 
       user
         .save()
-        .then(() => res.json('User updated!'))
+        .then(() => {
+          res.status(200).json('User updated!');
+          console.log('Changed profile');
+        })
         .catch((err) => res.status(400).json('Error: ' + err));
     })
+    .catch((err) => res.status(400).json('Error: ' + err));
+});
+
+userRouter.delete('/:id', (req, res) => {
+  User.findByIdAndDelete(req.params.id)
+    .then(() => res.json('User profile deleted.'))
     .catch((err) => res.status(400).json('Error: ' + err));
 });
 

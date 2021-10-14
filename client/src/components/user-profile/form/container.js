@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Modal } from "./modal";
-import PaymentButton from "../paymentButton/paymentButton.js";
+import Modal from "./modal";
+import Button from "../paymentButton/base-button.js";
 
 export class Container extends Component {
   state = { isShown: false };
@@ -10,16 +10,19 @@ export class Container extends Component {
     });
     this.toggleScrollLock();
   };
+
   closeModal = () => {
     this.setState({ isShown: false });
-    this.PaymentButton.focus();
+    this.Button.focus();
     this.toggleScrollLock();
   };
+
   onKeyDown = (event) => {
     if (event.keyCode === 27) {
       this.closeModal();
     }
   };
+
   onClickOutside = (event) => {
     if (this.modal && this.modal.contains(event.target)) return;
     this.closeModal();
@@ -28,16 +31,18 @@ export class Container extends Component {
   toggleScrollLock = () => {
     document.querySelector("html").classList.toggle("scroll-lock");
   };
+
   render() {
     return (
       <React.Fragment>
-        <PaymentButton
+        <Button
           showModal={this.showModal}
-          buttonRef={(n) => (this.PaymentButton = n)}
-          PaymentButtonText={this.props.PaymentButtonText}
+          buttonRef={(n) => (this.Button = n)}
+          buttonText={this.props.buttonText}
         />
         {this.state.isShown ? (
           <Modal
+            formType={this.props.formType}
             onSubmit={this.props.onSubmit}
             modalRef={(n) => (this.modal = n)}
             buttonRef={(n) => (this.closeButton = n)}

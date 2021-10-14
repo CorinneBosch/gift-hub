@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 
-// const Username = Cookies.get('username');
-// const UserId = Cookies.get('id');
+const Username = Cookies.get('username');
+const UserId = Cookies.get('id');
 
 export const LoginUser = () => {
   const [user, setUser] = useState([]);
@@ -22,7 +22,8 @@ export const LoginUser = () => {
           Cookies.set('username', `${req.data.user}`);
           Cookies.set('id', `${req.data._id}`);
           console.log(user);
-          window.location = '/profile/username';
+          // window.location = '/profile/username';
+          window.location = `/${Username}`;
         }
       })
       .catch((error) => {

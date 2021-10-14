@@ -22,7 +22,6 @@ export const LoginUser = () => {
           Cookies.set('username', `${req.data.user}`);
           Cookies.set('id', `${req.data._id}`);
           console.log(user);
-          // window.location = '/profile/username';
           window.location = `/${Username}`;
         }
       })

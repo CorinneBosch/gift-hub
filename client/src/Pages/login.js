@@ -21,8 +21,8 @@ export const LoginUser = () => {
         if (req.status === 200) {
           Cookies.set('username', `${req.data.user}`);
           Cookies.set('id', `${req.data._id}`);
-          console.log(user);
-          window.location = `/${Username}`;
+          // console.log(user);
+          window.location = `/profile/${Username}`;
         }
       })
       .catch((error) => {

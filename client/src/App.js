@@ -11,8 +11,8 @@ import Messages from './Pages/Messages';
 // import Form from "./components/stripe.components.js";
 
 import Cookies from 'js-cookie';
-
 const Username = Cookies.get('username');
+
 // const UserId = Cookies.get('id');
 
 function App() {
@@ -20,7 +20,8 @@ function App() {
     <Router>
       <Navbar />
       <Route path='/register' component={CreateUser} />
-      <Route path={`/${Username}`} component={UserProfile} />
+      <Route path={`/${Username}`} component={Private} />
+      <Route path='/profile/:username' component={UserProfile} />
       <Route path='/login' component={Login} />
       <Route path='/messages' component={Messages} />
       {/* <Route path="/p-form" component={Form} /> */}

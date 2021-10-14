@@ -32,7 +32,7 @@ class UserProfile extends React.Component {
   };
 
   render() {
-    const PaymentButtonText = "Buy me beer";
+    const PaymentButtonText = "Buy me";
     const EditButtonText = "Edit profile";
     const Username = Cookies.get("username");
     return (

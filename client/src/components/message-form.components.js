@@ -100,7 +100,7 @@ export default class MessageForm extends Component {
             />
           </div>
           <div>
-            <input type="submit" value="Send Form" />
+            <input type="submit" value="Send Form" onClick={this.stripepay} />
           </div>
         </form>
       </div>

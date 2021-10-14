@@ -7,12 +7,12 @@ const userSchema = new Schema(
   {
     firstname: {
       type: String,
-      required: [true, "first name required"],
+      required: [true, 'first name required'],
       minlength: 1,
     },
     lastname: {
       type: String,
-      required: [true, "last name required"],
+      required: [true, 'last name required'],
       minlength: 1,
     },
     username: {
@@ -42,6 +42,7 @@ const userSchema = new Schema(
     bio: {
       type: String,
       maxlength: 250,
+      default: '',
     },
     messages: [
       {

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import Cookies from 'js-cookie';
 import axios from 'axios';
-import { Button, Alert, Form, Card, Row } from 'react-bootstrap';
-// import 'bootstrap/disc/css/bootstrap.min.css';
 
 const Username = Cookies.get('username');
 const UserId = Cookies.get('id');
@@ -33,25 +31,20 @@ export const LoginUser = () => {
   };
 
   return (
-    <Form onSubmit={onSubmit}>
+    <form id='login-form' onSubmit={onSubmit}>
       <h3>Log In</h3>
-      {/* <Row className='mb-3'>
-        <Form.Group as={Col} controlId='formGridEmail'>
-          <Form.Control type='email' name='email' required onChange={onChange} placeholder='Email' />
-        </Form.Group>
-
-        <Form.Group as={Col} controlId='formGridPassword'>
-          <Form.Label>Password</Form.Label>
-          <Form.Control type='password' placeholder='Password' />
-        </Form.Group>
-      </Row> */}
-
-      <Row className='mb-3'></Row>
-      <Form.Control type='password' name='password' required onChange={onChange} placeholder='Password' />
-
-      <Button type='submit' value='Log In'>
+      <input id='input-4' type='email' name='email' required onChange={onChange} placeholder='Email' />
+      <input
+        id='input-4'
+        type='password'
+        name='password'
+        required
+        onChange={onChange}
+        placeholder='Password'
+      />
+      <button id='button' className='mb-3' type='submit' value='Log In'>
         Log In
-      </Button>
-    </Form>
+      </button>
+    </form>
   );
 };

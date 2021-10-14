@@ -1,16 +1,12 @@
 .box {
-  background-color: aquamarine;
+  background-color: #faebe3;
   background-size: 100%;
   /* font-family: 'Retrospective'; */
   padding-left: 5em;
   padding-right: 5em;
   margin-top: 0px;
-}
-
-.area {
-  background-color: palevioletred;
-  background-size: 100%;
-  /* font-family: 'Retrospective'; */
-  margin: 8% auto;
-  margin: 0px;
+  /* display: flex; */
+  margin: 0;
+  justify-content: center;
+  font-family: 'Urbanist', sans-serif;
 }

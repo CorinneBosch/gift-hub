@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Formik, Form } from 'formik';
+import { Button } from 'react-bootstrap';
 import * as Yup from 'yup';
 import { Input } from '../components/RegistrationInputFields';
 import axios from 'axios';
+import { TextField } from '@material-ui/core';
 
 export const Register = () => {
   // const [user, setUser] = useState([]);
@@ -38,6 +40,7 @@ export const Register = () => {
     confirmPassword: Yup.string()
       .oneOf([Yup.ref('password'), null], 'Password must match')
       .required('Confirm password is required'),
+    bio: Yup.string().max(249, 'Bio too long'),
   });
 
   const initialValues = {
@@ -47,6 +50,7 @@ export const Register = () => {
     email: '',
     password: '',
     confirmPassword: '',
+    bio: '',
   };
 
   const onSubmit = (values) => {
@@ -79,21 +83,19 @@ export const Register = () => {
       }}
     >
       {(formik) => (
-        <div>
+        <div id='register-form'>
           <h1>Sign Up</h1>
           <Form>
-            <Input label='First Name' name='firstname' type='text' placeholder='First Name' />
-            <Input label='Last Name' name='lastname' type='text' placeholder='Last Name' />
-            <Input label='Username' name='username' type='text' placeholder='Username' />
-            <Input label='Email' name='email' type='email' placeholder='someone@gifthub.com' />
-            <Input label='Password' name='password' type='password' placeholder='Password' />
-            <Input
-              label='Confirm Password'
-              name='confirmPassword'
-              type='password'
-              placeholder='Confirm Password'
-            />
-            <button type='submit'>Register</button>
+            <Input name='firstname' type='text' placeholder='First Name' id='input' />
+            <Input name='lastname' type='text' placeholder='Last Name' id='input' />
+            <Input name='username' type='text' placeholder='Username' id='input' />
+            <Input name='email' type='email' placeholder='someone@gifthub.com' id='input' />
+            <Input name='password' type='password' placeholder='Password' id='input' />
+            <Input name='confirmPassword' type='password' placeholder='Confirm Password' id='input' />
+            <Input name='bio' type='text' placeholder='Enter your bio...' id='input-5' />
+            <button id='button' type=' submit'>
+              Register
+            </button>
           </Form>
         </div>
       )}

@@ -19,15 +19,18 @@ const Username = Cookies.get('username');
 
 function App() {
   return (
+    // <Navbar />
     <Router>
       <Navbar />
-      <Route path='/register' component={CreateUser} />
-      <Route path={`/${Username}`} component={PrivateProfile} />
-      <Route path='/user/:username' component={UserProfile} />
-      <Route path='/login' component={Login} />
-      <Route path='/inbox' component={Messages} />
-      {/* <Route path="/p-form" component={Form} /> */}
-      {/* <Route path="/m-form" component={messageForm} /> */}
+      <div id='area'>
+        <Route path='/register' component={CreateUser} />
+        <Route path={`/${Username}`} component={PrivateProfile} />
+        <Route path='/user/:username' component={UserProfile} />
+        <Route path='/login' component={Login} />
+        <Route path='/inbox' component={Messages} />
+        {/* <Route path="/p-form" component={Form} /> */}
+        {/* <Route path="/m-form" component={messageForm} /> */}
+      </div>
     </Router>
   );
 }

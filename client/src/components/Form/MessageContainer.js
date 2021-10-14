@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Modal from './EditUserModal';
-import Button from '../Form/paymentButton/base-button';
+import Messages from './MessagesModal';
+import Button from './paymentButton/base-button';
 
-export class Container extends Component {
+export class MsgContainer extends Component {
   state = { isShown: false };
   showModal = () => {
     this.setState({ isShown: true }, () => {
@@ -41,7 +42,7 @@ export class Container extends Component {
           buttonText={this.props.buttonText}
         />
         {this.state.isShown ? (
-          <Modal
+          <Messages
             formType={this.props.formType}
             onSubmit={this.props.onSubmit}
             modalRef={(n) => (this.modal = n)}
@@ -56,4 +57,4 @@ export class Container extends Component {
   }
 }
 
-export default Container;
+export default MsgContainer;

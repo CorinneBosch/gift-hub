@@ -1,5 +1,5 @@
 import Container from '../components/Form/Container';
-import Select from 'react-select';
+import MsgContainer from '../components/Form/MessageContainer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
@@ -8,7 +8,6 @@ import avatar from '../images/lonely-boy.gif';
 import '../App.css';
 
 const PrivateProfile = () => {
-  const EditButtonText = 'Edit profile';
   const Username = Cookies.get('username');
 
   const [link, setLink] = useState(`https://only-gift.herokuapp.com/user/${Username}`);
@@ -54,15 +53,11 @@ const PrivateProfile = () => {
           {/* Profile pic placeholder */}
         </div>
         <div>
+          <MsgContainer id='button' buttonText='Inbox' onSubmit={onSubmit} />
+          <Container id='button' buttonText='Edit Profile' onSubmit={onSubmit} />
           <Link to='/login'>
             <button id='btn'>Log Out</button>
           </Link>
-          <Link to='/inbox'>
-            <button id='btn'>Inbox</button>
-          </Link>
-          <div id='edit_profile' className='edit_profile_section'>
-            <Container id='button' buttonText={EditButtonText} onSubmit={onSubmit} />
-          </div>
         </div>
       </div>
     </div>

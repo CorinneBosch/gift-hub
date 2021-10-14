@@ -1,4 +1,4 @@
-import Container from "./form/container.js";
+import Container from "../Form/Container";
 import Select from 'react-select';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';

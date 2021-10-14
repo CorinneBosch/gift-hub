@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { Component } from "react";
-import StripeToken from "./stripe.components";
 import { Redirect } from "react-router-dom";
 
 export default class MessageForm extends Component {
@@ -68,6 +67,7 @@ export default class MessageForm extends Component {
       email: "",
       message: "",
     });
+    window.location = "/p-form";
   }
 
   render() {

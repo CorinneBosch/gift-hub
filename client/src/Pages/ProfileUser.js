@@ -1,10 +1,18 @@
-import "../App.css";
-import Container from "../components/Form/Container.js";
+import Container from "../components/Form/Container";
+import Select from 'react-select';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../App.css';
+import React, { useState } from 'react';
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
-import React, { useState } from "react";
-
-import axios from "axios";
-import Cookies from "js-cookie";
+const Gift = [
+  { label: "🧁", value: 5 },
+  { label: "🍸", value: 12 },
+  { label: "🎂", value: 10 },
+  { label: "🍩", value: 8 },
+  { label: "🍺", value: 15 },
+];
 
 const UserProfile = () => {
   const PaymentButtonText = "Buy me beer";
@@ -27,9 +35,9 @@ const UserProfile = () => {
 
   const onSubmit = (event) => {
     event.preventDefault(event);
-    // console.log(event.target.email.value);
-    // console.log(event.target.message.value);
+    event.target.reset();
   };
+
   return (
     <div className="title_section user_profile_title">
       <div className="userProfile">
@@ -60,20 +68,32 @@ const UserProfile = () => {
         <div className="bio_section">
           {/* Bio placeholder begin */}
 
-          <h1>This is the Bio section</h1>
-
-          {/* Bio pic placeholder begin */}
+            {/* Profile pic placeholder end */}
+          </div>
+          <div className="bio_section">
+            {/* Bio placeholder begin */}
+          </div>
+          < form onSubmit={onSubmit}>
+           <div className="container">
+            <div className="row">
+            <div className="col-md-2"></div>
+            <div className="col-md-4">
+            <Select options={Gift}/>
+          </div>
+          <div className="col-md-4"></div>
         </div>
-        <div id="payment" className="payment_section">
-          <Container
-            formType="payment"
-            buttonText={PaymentButtonText}
-            onSubmit={onSubmit}
-          />
+        </div>
+        </form>
+            <div id="payment" className="payment_section">
+              <Container
+                formType="payment"
+                buttonText={PaymentButtonText}
+                onSubmit={this.onSubmit}
+              />
+          </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+}
 
 export default UserProfile;

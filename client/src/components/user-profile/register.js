@@ -49,10 +49,6 @@ export const Register = () => {
     confirmPassword: '',
   };
 
-  // const onChange = (e) => {
-  //   setUser({ ...user, [e.target.name]: e.target.value });
-  // };
-
   const onSubmit = (values) => {
     axios
       .post('http://localhost:5000/users/register', values)

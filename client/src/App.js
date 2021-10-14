@@ -1,19 +1,19 @@
-import "./App.css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import UserProfile from './components/user-profile/user-profile.js';
+import UserProfile from './Pages/ProfileUser';
 
-import CreateUser from './components/user-profile/register-user';
-import Login from './components/user-profile/login-user';
-import Navbar from './components/navbar.js';
-import Messages from './components/messages';
-import messageForm from './components/message-form.components.js';
-import Form from './components/stripe.components.js';
+import CreateUser from './Pages/RegisterUser';
+import Login from './Pages/LoginUser';
+import Navbar from './components/Navbar';
+import Messages from './Pages/Messages';
+// import messageForm from "./components/message-form.components.js";
+// import Form from "./components/stripe.components.js";
+
 import Cookies from 'js-cookie';
 
 const Username = Cookies.get('username');
 // const UserId = Cookies.get('id');
-
 
 function App() {
   return (
@@ -23,8 +23,8 @@ function App() {
       <Route path={`/${Username}`} component={UserProfile} />
       <Route path='/login' component={Login} />
       <Route path='/messages' component={Messages} />
-      <Route path='/m-form' component={messageForm} />
-      <Route path='/p-form' component={Form} />
+      {/* <Route path="/p-form" component={Form} /> */}
+      {/* <Route path="/m-form" component={messageForm} /> */}
     </Router>
   );
 }

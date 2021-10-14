@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import Modal from "./modal";
-import Button from "../paymentButton/base-button.js";
+import React, { Component } from 'react';
+import Modal from './Modal';
+import Button from '../Form/paymentButton/base-button';
 
 export class Container extends Component {
   state = { isShown: false };
@@ -29,7 +29,7 @@ export class Container extends Component {
   };
 
   toggleScrollLock = () => {
-    document.querySelector("html").classList.toggle("scroll-lock");
+    document.querySelector('html').classList.toggle('scroll-lock');
   };
 
   render() {

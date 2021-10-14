@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { LoginUser } from './login';
+import React, { Component } from "react";
+import { LoginUser } from "./Login";
 
 export default class Login extends Component {
   render() {

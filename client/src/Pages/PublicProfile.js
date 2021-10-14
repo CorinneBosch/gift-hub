@@ -14,7 +14,7 @@ const Gift = [
 ];
 
 const UserProfile = () => {
-  const PaymentButtonText = 'Buy me beer';
+  const PaymentButtonText = 'Choose Gift';
   const Username = Cookies.get('username');
 
   const [link, setLink] = useState(`https://only-gift.herokuapp.com/user/${Username}`);
@@ -44,7 +44,7 @@ const UserProfile = () => {
         </div>
         <div className='bio_section'>
           {/* Bio placeholder begin */}
-
+          <p>something really lovely about myself</p>
           {/* Profile pic placeholder end */}
         </div>
 

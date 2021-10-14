@@ -11,7 +11,8 @@
     "collectCoverage": true,
     "coverageReporters": [
       "html"
-    ]
+    ],
+    "testEnvironment": "node"
   },
   "keywords": [],
   "author": "",

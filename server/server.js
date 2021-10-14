@@ -3,6 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
 const striperoutes = require('./routes/stripe');
+
 require('dotenv').config();
 
 const app = express();

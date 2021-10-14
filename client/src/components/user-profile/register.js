@@ -20,7 +20,7 @@ export const Register = () => {
       .min(4, 'Username must be at least 4 characters')
       .max(15, 'Must be 15 characters or less')
       .matches(/^[aA-zZ\s]+$/, 'Only alphabets are allowed for this field')
-      // .matches(/^\s*$/, 'No white spaces allowed in username')
+      .matches(/^\s*$/, 'No white spaces allowed in username')
       .matches(/^\S+$/, 'No white spaces allowed in username')
       .required('Required'),
     email: Yup.string()
@@ -31,10 +31,10 @@ export const Register = () => {
     password: Yup.string()
       .min(8, 'Password must be at least 8 charaters')
       .max(20, 'Password must below 20 charaters')
-      // .matches(
-      //   /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/,
-      //   'Password must contain number, uppercase letter and special character'
-      // )
+      .matches(
+        /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/,
+        'Password must contain number, uppercase letter and special character'
+      )
       .required('Password is required'),
     confirmPassword: Yup.string()
       .oneOf([Yup.ref('password'), null], 'Password must match')
@@ -55,8 +55,6 @@ export const Register = () => {
   // };
 
   const onSubmit = (values) => {
-    // e.preventDefault();
-
     axios
       .post('http://localhost:5000/users/register', values)
       .then((res) => {

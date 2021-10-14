@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import { Input } from './form/input-field';
+import { Input } from '../components/RegistrationInputFields';
 import axios from 'axios';
 
 export const Register = () => {
@@ -54,7 +54,6 @@ export const Register = () => {
       .post('http://localhost:5000/users/register', values)
       .then((res) => {
         if (res.status == 200) {
-          console.log(res.data);
           window.location = '/login';
         } else {
           alert(res.data);
@@ -101,3 +100,5 @@ export const Register = () => {
     </Formik>
   );
 };
+
+export default Register;

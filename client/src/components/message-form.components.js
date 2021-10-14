@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
-import stripeForm from "./stripe.components";
+import { Redirect } from "react-router-dom";
+
 export default class MessageForm extends Component {
   constructor(props) {
     super(props);
@@ -51,7 +52,7 @@ export default class MessageForm extends Component {
       .then((res) => {
         if (res.status === 200) {
           console.log(res.data);
-          // window.location = "/p-form";
+          window.location = "/p-form";
         } else {
           alert(res.data);
         }
@@ -72,7 +73,7 @@ export default class MessageForm extends Component {
   render() {
     return (
       <div>
-        <h3>Send Form</h3>
+        <h3>Send Form </h3>
         <form onSubmit={this.onSubmit}>
           <div>
             <input
@@ -100,7 +101,7 @@ export default class MessageForm extends Component {
             />
           </div>
           <div>
-            <input type="submit" value="Send Form" onClick={this.stripepay} />
+            <input type="submit" value="Send Form" Redirect to="/p-form" />
           </div>
         </form>
       </div>

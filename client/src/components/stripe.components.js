@@ -9,30 +9,30 @@ const stripeForm = () => {
 
   const handleToken = (totalAmount, token) => {
     try {
-        axios.post("http://localhost:5000/api/stripe/payment", {
-          token: token.id,
-          amount: totalAmount
-        });
-      } catch (err) {
-        console.log(err);
-      };
+      axios.post("http://localhost:5000/api/stripe/payment", {
+        token: token.id,
+        amount: totalAmount,
+      });
+    } catch (err) {
+      console.log(err);
     }
+  };
 
-    const tokenHandler = (token) => {
-      handleToken(100, token);
-    }
-    return (
-      <div>
-        <Stripe
-          name="onlyGifts"
-          image=""
-          email
-          description="Your total is £5"
-          amount={5000}
-          token={tokenHandler}
-          stripeKey={KEY}
-        />
-        </div>
+  const tokenHandler = (token) => {
+    handleToken(100, token);
+  };
+  return (
+    <div>
+      <Stripe
+        name="onlyGifts"
+        image=""
+        email
+        description="Your total is £5"
+        amount={5000}
+        token={tokenHandler}
+        stripeKey={KEY}
+      />
+    </div>
   );
 }
 export default stripeForm;

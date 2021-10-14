@@ -1,8 +1,10 @@
-import React from "react";
 import Container from "./form/container.js";
 import Select from 'react-select';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Cookies from "js-cookie";
+import '../../App.css';
+import React, { useState } from 'react';
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const Gift = [
   { label: "🧁", value: 5 },
@@ -12,68 +14,66 @@ const Gift = [
   { label: "🍺", value: 15 },
 ];
 
+const UserProfile = () => {
+  const PaymentButtonText = 'Buy me beer';
+  const EditButtonText = 'Edit profile';
 
-class UserProfile extends React.Component {
-  constructor(props) {
-    // const [PaymentButtonText, buttonRef, showModal] = React.useState();
-    super(props);
-    this.state = { value: " " };
+  const Username = Cookies.get('username');
+    // const UserId = Cookies.get('id')
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  const [link, setLink] = useState(`https://Heroku/${Username}`);
+  const [copySuccess, setCopySuccess] = useState('');
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
-  }
+  const inputHandler = (event) => {
+    setLink(event.target.value);
+  };
 
-  handleSubmit(event) {
-    alert('The gift you picked: '+ this.state.value);
-    event.preventDefault();
-    window.location = "/m-form";
-  }
- 
-  // const UserId = Cookies.get('id')
+  const copy = () => {
+    navigator.clipboard.writeText(link);
+    setCopySuccess(`${link} Copied!`);
+  };
 
-  onSubmit = (event) => {
+  const onSubmit = (event) => {
     event.preventDefault(event);
     event.target.reset();
   };
 
-  render() {
-    const PaymentButtonText = "Buy me";
-    const EditButtonText = "Edit profile";
-    const Username = Cookies.get("username");
-    return (
-      <div className="title_section user_profile_title">
-        <div className="userProfile">
-          <div id="edit_profile" className="edit_profile_section">
-            <Container buttonText={EditButtonText} onSubmit={this.onSubmit} />
-          </div>
-          <div className="profile_pic_section">
-            <h1>Hello, {Username}</h1>
-            {console.log(document.cookie)}
-            {/* Profile pic placeholder begin */}
+  return (
+    <div className='title_section user_profile_title'>
+      <div className='userProfile'>
+        <div id='edit_profile' className='edit_profile_section'>
+          <Container buttonText={EditButtonText} onSubmit={onSubmit} />
+        </div>
+        <div className='profile_pic_section'>
+          <h1>Hello, {Username}</h1>
+          {console.log(document.cookie)}
+          {/* Profile pic placeholder begin */}
 
-            <h1>This is the Profile picture section</h1>
-            <img
-              src="https://image.shutterstock.com/image-vector/default-profile-picture-avatar-photo-260nw-1681253560.jpg"
-              width="262px"
-              alt="this is a placeholder"
-              height="262px"
-              border-radius="50%"
-            />
+          <h1>This is the Profile picture section</h1>
+          <img
+            src='https://image.shutterstock.com/image-vector/default-profile-picture-avatar-photo-260nw-1681253560.jpg'
+            width='262px'
+            alt='this is a placeholder'
+            height='262px'
+            border-radius='50%'
+          />
+        </div>
+        <div className='copy_link'>
+          <input value={`https://Heroku/${Username}`} onChange={inputHandler} />
+          <button onClick={copy} disabled={!link}>
+            Copy & Share Link
+          </button>
+          {copySuccess}
+        </div>
+        <div className='bio_section'>
+          {/* Bio placeholder begin */}
 
             {/* Profile pic placeholder end */}
           </div>
           <div className="bio_section">
             {/* Bio placeholder begin */}
-
-            <h1>This is the Bio section</h1>
-
-            {/* Bio pic placeholder begin */}
           </div>
-          < form onSubmit={this.handleSubmit}>
+          < form onSubmit={onSubmit}>
            <div className="container">
             <div className="row">
             <div className="col-md-2"></div>
@@ -84,27 +84,6 @@ class UserProfile extends React.Component {
         </div>
         </div>
         </form>
-          {/* <form onSubmit={this.handleSubmit}>
-            <label>
-              Pick your gift:
-              <select value={this.state.value} onChange={this.handleChange}>
-              <option value="🧁 $3">
-                  🧁 
-                </option>
-                <option value="🍸 $5">
-                🍸
-                </option>
-                <option value="🍩 $8">
-                  🍩
-                </option>
-                <option value="🎂 $10">
-                  🎂
-                </option>
-                <option value="🍺 $12">
-                  🍺
-                </option>
-              </select>
-            </label> */}
             <div id="payment" className="payment_section">
               <Container
                 formType="payment"
@@ -115,7 +94,6 @@ class UserProfile extends React.Component {
         </div>
       </div>
     );
-  }
 }
 
 export default UserProfile;

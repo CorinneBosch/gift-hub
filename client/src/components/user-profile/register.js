@@ -5,7 +5,7 @@ import { Input } from './form/input-field';
 import axios from 'axios';
 
 export const Register = () => {
-  const [user, setUser] = useState({ firstname: '', lastname: '', username: '', email: '', password: '' });
+  const [user, setUser] = useState([]);
 
   const validate = Yup.object({
     firstname: Yup.string()
@@ -31,60 +31,59 @@ export const Register = () => {
     password: Yup.string()
       .min(8, 'Password must be at least 8 charaters')
       .max(20, 'Password must below 20 charaters')
-      .matches(
-        /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/,
-        'Password must contain number, uppercase letter and special character'
-      )
+      // .matches(
+      //   /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/,
+      //   'Password must contain number, uppercase letter and special character'
+      // )
       .required('Password is required'),
-    // confirmPassword: Yup.string()
-    //   .oneOf([Yup.ref('password'), null], 'Password must match')
-    //   .required('Confirm password is required'),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref('password'), null], 'Password must match')
+      .required('Confirm password is required'),
   });
 
-  // const onChange = (e) => {
-  //   setUser({ ...user, [e.target.name]: e.target.value });
-  // };
+  const initialValues = {
+    firstname: '',
+    lastname: '',
+    username: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  };
 
-  // const onSubmit = (e) => {
-  //   e.preventDefault();
+  const onChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
 
-  //   axios
-  //     .post('http://localhost:5000/users/register', user)
-  //     .then((res) => {
-  //       if (res.status === 200) {
-  //         console.log(res.data.user);
-  //         console.log(res.data);
-  //         window.location = '/login';
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
+  const onSubmit = (values) => {
+    // e.preventDefault();
 
-  //   <textarea
-  //   type='text'
-  //   name='bio'
-  //   maxLength='249'
-  //   required
-  //   onChange={onChange}
-  //   placeholder='Update your bio...'
-  //   className='edit_bio_textarea'
-  // />
-  // replace(/\s+/g, '')
+    axios
+      .post('http://localhost:5000/users/register', values)
+      .then((res) => {
+        if (res.status == 200) {
+          console.log(res.data);
+          window.location = '/login';
+        } else {
+          alert(res.data);
+        }
+      })
+      .catch((err) => {
+        if (err.response.status == 401) {
+          alert('Please choose different username');
+        } else {
+          alert(err.message);
+        }
+      });
+  };
+
   return (
     <Formik
-      initialValues={{
-        firstname: '',
-        lastname: '',
-        username: '',
-        email: '',
-        password: '',
-        // confirmPassword: '',
-      }}
+      initialValues={initialValues}
       validationSchema={validate}
-      onSubmit={(values) => {
+      onSubmit={(values, { resetForm }) => {
         console.log(values);
+        onSubmit(values);
+        // resetForm();
       }}
     >
       {(formik) => (
@@ -96,7 +95,12 @@ export const Register = () => {
             <Input label='Username' name='username' type='text' placeholder='Username' />
             <Input label='Email' name='email' type='email' placeholder='someone@gifthub.com' />
             <Input label='Password' name='password' type='password' placeholder='Password' />
-            {/* <Input label='Confirm Password' name='confirmPassword' type='password' placeholder="Password"/> */}
+            <Input
+              label='Confirm Password'
+              name='confirmPassword'
+              type='password'
+              placeholder='Confirm Password'
+            />
             <button type='submit'>Register</button>
           </Form>
         </div>

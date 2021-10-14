@@ -1,8 +1,8 @@
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import UserProfile from './Pages/ProfileUser';
-
+import UserProfile from './Pages/PublicProfile';
+import PrivateProfile from './Pages/PrivateProfile';
 import CreateUser from './Pages/RegisterUser';
 import Login from './Pages/LoginUser';
 import Navbar from './components/Navbar';
@@ -20,10 +20,10 @@ function App() {
     <Router>
       <Navbar />
       <Route path='/register' component={CreateUser} />
-      <Route path={`/${Username}`} component={Private} />
+      <Route path={`/${Username}`} component={PrivateProfile} />
       <Route path='/user/:username' component={UserProfile} />
       <Route path='/login' component={Login} />
-      <Route path='/messages' component={Messages} />
+      <Route path='/inbox' component={Messages} />
       {/* <Route path="/p-form" component={Form} /> */}
       {/* <Route path="/m-form" component={messageForm} /> */}
     </Router>

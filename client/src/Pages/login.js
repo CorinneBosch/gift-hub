@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import axios from 'axios';
 
 const Username = Cookies.get('username');
-const UserId = Cookies.get('id');
+// const UserId = Cookies.get('id');
 
 export const LoginUser = () => {
   const [user, setUser] = useState([]);

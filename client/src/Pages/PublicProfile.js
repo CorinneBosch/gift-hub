@@ -1,6 +1,7 @@
 import Container from '../components/Form/Container';
 import Select from 'react-select';
 import avatar from '../images/lonely-boy.gif';
+import { useParams } from 'react-router-dom';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 import React, { useState } from 'react';
@@ -17,6 +18,22 @@ const Gift = [
 const UserProfile = () => {
   const PaymentButtonText = 'Gift';
 
+  const { username } = useParams();
+
+  const userName = username.charAt(0).toUpperCase() + username.slice(1);
+
+  console.log(username);
+
+  const setUserState = {
+    firstname: '',
+    // lastname: '',
+    // username: '',
+    // email: '',
+    // bio: '',
+    // messages: '',
+    // profilePicture: '',
+  };
+
   const inputHandler = (event) => {
     setLink(event.target.value);
   };
@@ -26,6 +43,34 @@ const UserProfile = () => {
     event.target.reset();
   };
 
+  const componentDidMount = (username) => {
+    axios
+      .get(`http://localhost:5000/users/${username}`)
+      .then((data) => {
+        setUserState({ firstname: data.firstname });
+        //   data.firstname,
+        //   data.lastname,
+        //   data.username,
+        //   data.email,
+        //   data.message,
+        //   data.profilePicture
+        condole.log(data);
+        console.log(setUserState);
+        // );
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  console.log(setUserState);
+  console.log(componentDidMount);
+  console.log(setUserState);
+
+  const queryParams = new URLSearchParams(window.location.search);
+  const name = queryParams.get('username');
+  const type = queryParams.get('type');
+  console.log(name, type);
+
   return (
     <div class='box'>
       <div id='profile-img'>
@@ -34,7 +79,8 @@ const UserProfile = () => {
       <div id='profile-form' className='userProfile'>
         <div className='profile_pic_section'>
           {/* Profile pic placeholder begin */}
-          <h1>Lonely Boy</h1>
+          <h1>{userName}</h1>
+          {/* <div>Username: {setUserState}</div> */}
         </div>
         <div id='select'>
           {/* Bio placeholder begin */}
@@ -43,7 +89,7 @@ const UserProfile = () => {
         </div>
 
         <form id='select' onSubmit={onSubmit}>
-          <p>Make a gift</p>
+          <p>Make {userName} a gift</p>
           <Select options={Gift} />
           {/* </form> */}
           {/* <div id='payment' className='payment_section'> */}

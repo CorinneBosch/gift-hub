@@ -43,7 +43,7 @@ const UserProfile = () => {
         </div>
 
         <form id='select' onSubmit={onSubmit}>
-          <p>Select a gift below & click Gift to continue</p>
+          <p>Make a gift</p>
           <Select options={Gift} />
           {/* </form> */}
           {/* <div id='payment' className='payment_section'> */}

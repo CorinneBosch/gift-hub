@@ -32,8 +32,7 @@ const EditForm = () => {
 
   return (
     <form onSubmit={onSubmit}>
-      <label htmlFor='file'>Upload picture</label>
-      <input type='file' name='profilePicture' onChange={onChange} required />
+      <h1 id='center'>Edit Profile</h1>
       <textarea
         type='text'
         name='bio'
@@ -41,10 +40,25 @@ const EditForm = () => {
         required
         onChange={onChange}
         placeholder='Update your bio...'
-        className='edit_bio_textarea'
+        id='input-6'
       />
-      <button className='form-control btn btn-primary' type='submit'>
-        Update Profile
+      <div>
+        {/* <input type='file' name='file' id='file' class='inputfile' /> */}
+        {/* <label for='file'>Upload picture</label> */}
+        <input
+          // id='button'
+          type='file'
+          name='profilePicture'
+          // name='file'
+          id='file'
+          class='inputfile'
+          onChange={onChange}
+          required
+        />
+        <label for='file'>Upload picture</label>
+      </div>
+      <button id='edit-btn' type='submit'>
+        Update
       </button>
     </form>
   );

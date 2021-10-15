@@ -19,7 +19,7 @@ const PrivateProfile = () => {
 
   const copy = () => {
     navigator.clipboard.writeText(link);
-    setCopySuccess(`Link Copied!`);
+    setCopySuccess('Link Copied!');
   };
 
   const onSubmit = (event) => {
@@ -43,7 +43,7 @@ const PrivateProfile = () => {
             onChange={inputHandler}
           />
           <button id='btn' onClick={copy} disabled={!link}>
-            Share Link
+            🔗Share Link
           </button>
           {copySuccess}
         </div>
@@ -55,9 +55,6 @@ const PrivateProfile = () => {
         <div>
           <MsgContainer id='button' buttonText='Inbox' onSubmit={onSubmit} />
           <Container id='button' buttonText='Edit Profile' onSubmit={onSubmit} />
-          <Link to='/login'>
-            <button id='btn'>Log Out</button>
-          </Link>
         </div>
       </div>
     </div>

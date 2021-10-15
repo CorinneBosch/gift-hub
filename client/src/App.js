@@ -7,15 +7,13 @@ import CreateUser from './Pages/RegisterUser';
 import Login from './Pages/LoginUser';
 import Navbar from './components/Navbar';
 import Messages from './Pages/Messages';
-import Button from 'react-bootstrap';
-// import 'bootstrap/disc/css/bootstrap.min.css'
+import Home from './Pages/Home';
+
 // import messageForm from "./components/message-form.components.js";
 // import Form from "./components/stripe.components.js";
 
 import Cookies from 'js-cookie';
 const Username = Cookies.get('username');
-
-// const UserId = Cookies.get('id');
 
 function App() {
   return (
@@ -23,6 +21,7 @@ function App() {
     <Router>
       <Navbar />
       <div id='area'>
+        <Route path='/hello' component={Home} />
         <Route path='/register' component={CreateUser} />
         <Route path={`/${Username}`} component={PrivateProfile} />
         <Route path='/user/:username' component={UserProfile} />

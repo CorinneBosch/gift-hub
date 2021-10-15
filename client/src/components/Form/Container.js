@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Modal from './EditUserModal';
 import Button from '../Form/paymentButton/base-button';
+import PublicButton from '../Form/paymentButton/base-button-public';
 
 export class Container extends Component {
   state = { isShown: false };

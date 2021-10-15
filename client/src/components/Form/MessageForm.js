@@ -3,24 +3,24 @@ import React from 'react';
 const MessageForm = () => {
   return (
     <form>
-      <h1>Display messages here</h1>
-      <div>
-        <p>Name: flower</p>
-        <p>Email: tinymice@example.com</p>
-        <p>Message: I just sent you a cup of coffee</p>
+      <h1 id='center'>Your Messages</h1>
+      <div id='note'>
+        <p>Rubberduckie sent you 🍸</p>
+        <p>Really appreciate you took time to help me debug my errors today!</p>
+        <p>mr_scrooge@onlygifts.com</p>
       </div>
-      <div>
-        <p>Name: Shinystar2</p>
-        <p>Email: shinystar@example.com</p>
-        <p>Message: You are amazing, I just sent you a gift</p>
+      <div id='note'>
+        <p>MissQueenB sent you 🍺</p>
+        <p>Thanks for our amazing time here at Makers! The next one is on you😜</p>
+        <p>shinystar@example.com</p>
       </div>
-      <div>
-        <p>Name: cinderrella</p>
-        <p>Email: cindy@example.com</p>
-        <p>Message: Hope to see you soon</p>
+      <div id='note'>
+        <p>DantheMan sent you ☕️</p>
+        <p>Just thought I leave this special message here to celebrate our joint enthusiasm for oats🍪</p>
+        <p>danny@gmail.com</p>
       </div>
-      <button className='form-control btn btn-primary' type='submit'>
-        Inbox
+      <button id='button' type='submit'>
+        Back to Profile
       </button>
     </form>
   );

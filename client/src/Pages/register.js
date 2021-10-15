@@ -77,7 +77,6 @@ export const Register = () => {
       initialValues={initialValues}
       validationSchema={validate}
       onSubmit={(values, { resetForm }) => {
-        console.log(values);
         onSubmit(values);
         // resetForm();
       }}
@@ -88,11 +87,11 @@ export const Register = () => {
           <Form>
             <Input name='firstname' type='text' placeholder='First Name' id='input' />
             <Input name='lastname' type='text' placeholder='Last Name' id='input' />
-            <Input name='username' type='text' placeholder='Username' id='input' />
-            <Input name='email' type='email' placeholder='someone@gifthub.com' id='input' />
+            <Input name='username' type='text' placeholder='User Name' id='input' />
+            <Input name='email' type='email' placeholder='Email' id='input' />
             <Input name='password' type='password' placeholder='Password' id='input' />
             <Input name='confirmPassword' type='password' placeholder='Confirm Password' id='input' />
-            <Input name='bio' type='text' placeholder='Enter your bio...' id='input-5' />
+            <Input name='bio' type='textarea' placeholder='Enter your bio...' id='input-5' />
             <button id='button' type=' submit'>
               Register
             </button>

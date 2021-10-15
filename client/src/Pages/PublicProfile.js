@@ -1,6 +1,7 @@
 import Container from '../components/Form/Container';
 import Select from 'react-select';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import avatar from '../images/lonely-boy.gif';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 import React, { useState } from 'react';
 import Cookies from 'js-cookie';
@@ -14,10 +15,7 @@ const Gift = [
 ];
 
 const UserProfile = () => {
-  const PaymentButtonText = 'Choose Gift';
-  const Username = Cookies.get('username');
-
-  const [link, setLink] = useState(`https://only-gift.herokuapp.com/user/${Username}`);
+  const PaymentButtonText = 'Gift';
 
   const inputHandler = (event) => {
     setLink(event.target.value);
@@ -29,39 +27,29 @@ const UserProfile = () => {
   };
 
   return (
-    <div className='title_section user_profile_title'>
-      <div className='userProfile'>
+    <div class='box'>
+      <div id='profile-img'>
+        <img id='avatar' src={avatar} />
+      </div>
+      <div id='profile-form' className='userProfile'>
         <div className='profile_pic_section'>
           {/* Profile pic placeholder begin */}
-          <h1>This is the Profile picture section</h1>
-          <img
-            src='https://image.shutterstock.com/image-vector/default-profile-picture-avatar-photo-260nw-1681253560.jpg'
-            width='262px'
-            alt='this is a placeholder'
-            height='262px'
-            border-radius='50%'
-          />
+          <h1>Lonely Boy</h1>
         </div>
-        <div className='bio_section'>
+        <div id='select'>
           {/* Bio placeholder begin */}
-          <p>something really lovely about myself</p>
+          <p>I love drinking pumkin spice latte in space</p>
           {/* Profile pic placeholder end */}
         </div>
 
-        <form onSubmit={onSubmit}>
-          <div className='container'>
-            <div className='row'>
-              <div className='col-md-2'></div>
-              <div className='col-md-4'>
-                <Select options={Gift} />
-              </div>
-              <div className='col-md-4'></div>
-            </div>
-          </div>
+        <form id='select' onSubmit={onSubmit}>
+          <p>Select a gift below & click Gift to continue</p>
+          <Select options={Gift} />
+          {/* </form> */}
+          {/* <div id='payment' className='payment_section'> */}
+          <Container id='btn-gift' formType='payment' buttonText={PaymentButtonText} onSubmit={onSubmit} />
+          {/* </div> */}
         </form>
-        <div id='payment' className='payment_section'>
-          <Container formType='payment' buttonText={PaymentButtonText} onSubmit={onSubmit} />
-        </div>
       </div>
     </div>
   );

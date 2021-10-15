@@ -32,7 +32,7 @@ export const LoginUser = () => {
 
   return (
     <form id='login-form' onSubmit={onSubmit}>
-      <h3>Log In</h3>
+      <h1>Log In</h1>
       <input id='input-4' type='email' name='email' required onChange={onChange} placeholder='Email' />
       <input
         id='input-4'

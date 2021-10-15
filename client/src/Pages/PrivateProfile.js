@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import Cookies from 'js-cookie';
 import avatar from '../images/lonely-boy.gif';
+import avatar2 from '../images/hotu.png';
 import '../App.css';
 
 const PrivateProfile = () => {
@@ -30,7 +31,8 @@ const PrivateProfile = () => {
   return (
     <div className='title_section user_profile_title'>
       <div id='profile-img'>
-        <img id='avatar' src={avatar} />
+        {/* <img id='avatar' src={avatar} /> */}
+        <img id='avatar' src={avatar2} />
       </div>
       <div id='profile-form' className='userProfile'>
         <div className='profile_pic_section'>

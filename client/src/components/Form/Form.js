@@ -36,15 +36,6 @@ export const Form = ({ onSubmit }) => {
         <input type='name' className='form-control gift_form_name' id='name' placeholder='Enter name here' />
       </div>
       <div className='form-group'>
-        <label htmlFor='email'>Email</label>
-        <input
-          type='email'
-          className='form-control gift_form_email'
-          id='email'
-          placeholder='mr_scrooge@onlygifts.com'
-        />
-      </div>
-      <div className='form-group'>
         <label htmlFor='email'>Message</label>
         <input
           id='input'
@@ -59,7 +50,7 @@ export const Form = ({ onSubmit }) => {
           name='onlyGifts'
           image=''
           email
-          description='Your total is £5'
+          description='Your total is $5'
           amount={500}
           token={onToken}
           stripeKey={KEY}

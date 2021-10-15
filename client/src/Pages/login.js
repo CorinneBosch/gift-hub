@@ -12,6 +12,7 @@ export const LoginUser = () => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
+  console.log(Username);
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -22,6 +23,7 @@ export const LoginUser = () => {
           Cookies.set('username', `${req.data.user}`);
           Cookies.set('id', `${req.data._id}`);
           window.location = `/${Username}`;
+          // window.location = `/`;
         }
       })
       .catch((error) => {

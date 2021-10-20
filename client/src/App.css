@@ -51,7 +51,7 @@ h1 {
   background-size: 100%;
   padding-left: 5em;
   padding-right: 5em;
-  margin-top: 0px;
+  margin-top: 20px;
   margin: 0;
   justify-content: center;
   font-family: 'Urbanist', sans-serif;
@@ -268,6 +268,7 @@ h1 {
   border-bottom-right-radius: 15px;
   background-color: #baa2fb;
   width: 97%;
+  margin-top: 0%;
   margin-left: auto;
   margin-right: auto;
   list-style-type: none;

@@ -31,11 +31,8 @@ Our final group project at Makers Academy, learning and implementing the followi
 
 1. **Fork** this [Gift-Hub repository](https://github.com/CorinneBosch/gift-hub/) 
 2. Then clone **your** fork to your computer.
-3. Ensure you have `Ruby` and `rspec` installed. Check ruby version with `ruby -v`
-4. Install bundler if you haven't already.
-`gem install bundler`
-5. Install the gems required by this repository.
-`bundle install`
+3. Ensure you have `node.js` and `npm` installed. Check node version with `node -v`
+4. Install all node modules in both client & server directory with `npm i`.
 
 ## <a name="DB">Database connection</a>
 
@@ -57,6 +54,7 @@ Now you can register on Gift Hub and share your custom link with your friends!
 
 ## <a name="Tests">Run test</a>
 
+**Client Tests**\
 To run integration tests open the cypress extension in your command line.\
 In a seperate terminal start your client local host.
 ```
@@ -71,14 +69,17 @@ Start local host first and run cypress in a second terminal.
 $ cd client && npm start
 $ cd client && npx cypress run
 ```
- 
+<br />
+  
+**Server Tests**\
 The server side uses Jest for end-point testing.\
 Test data is stored in a seperate database table.\
-Create a seperate database in your cluster.\ 
+Create a seperate database in your cluster.\
 Set it equal to `DB_URI_TEST` in your `.env` file.
 ```
 $ cd server && npm test
 ```
+
 
 ## <a name="User-Stories">User stories</a>
 

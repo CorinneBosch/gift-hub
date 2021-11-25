@@ -1,18 +1,26 @@
 Gift Hub
 ==================
 
-[Goals](#Project) | [Setup](#Setup) | [DB Connection](#DB) | [Programme](#Interact) | [Run Tests](#Tests) | [User Stories](#User-Stories) | [Wireframe](#Wireframe)
-
 <div align="left"> 
   <img src="client/src/images/lonely-boy.gif" alt="ace" width="200"/> </a> 
-  <img src="client/src/images/gift1.gif" alt="ace" width="200"/> </a> 
+  <img src="client/src/images/lonely-boy.gif" alt="ace" width="200"/> </a> 
+  <img src="client/src/images/lonely-boy.gif" alt="ace" width="200"/> </a> 
+<!--   <img src="client/src/images/gift1.gif" alt="ace" width="200"/> </a>  -->
 <div>
+  
+______
+  
+[Goals](#Project) | [Set up](#Setup) | [DB Connection](#DB) | [Interact](#Interact) | [Run Tests](#Tests) | [User Stories](#User-Stories) | [Wireframe](#Wireframe)
+  
+As our team was scattered in different places around the world, we wanted to create a platform that could connect us and share our appreciation for each other even through distance. 
 
-Gift Hub is a platform allowing users to send & receive small gifts to friends.
+Gift Hub is a platform allowing users to generate unique links that can be shared. Their friends can send them small gifts such as a coffee or martini through Stripe to brighten up their day. Hence our lonely astronaut shows you can now share coffee with anyone in this galaxy!
+
+  
 
 A collaboration between [Suhani](https://github.com/suhani-zaman), [Hotu](https://github.com/ClaimingCookie5), [Blessing](https://github.com/BlessingUb), [Farya](https://github.com/Xfarya) & [Corinne](https://github.com/CorinneBosch) around the theme 'work & social'. We have set ourselves the ambitious challenge to pick up MERN stack within 14 days to make the best out of our remaining time at Makers.
 
-Since graduating from Makers I integrated a few more features on this project individually.\
+Since graduating from Makers I have integrated a few more features on this project individually.\
 My implementations are integrated on `main`, but you can check out the original project on `only-gifts` branch.
   
 ## <a name="Project">Engineering Project III - Gift Hub</a>
@@ -27,7 +35,7 @@ Our final group project at Makers Academy, learning and implementing the followi
 - Use a branch/PR/merge git workflow
 - Give and receive meaningful code review
 
-## <a name="Setup">Setup</a>
+## <a name="Setup">Set up</a>
 
 1. **Fork** this [Gift-Hub repository](https://github.com/CorinneBosch/gift-hub/) 
 2. Then clone **your** fork to your computer.

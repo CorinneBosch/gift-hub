@@ -1,27 +1,35 @@
 Gift Hub
 ==================
 
+[Goals](#Project) | [Setup](#Setup) | [Programme](#Interact) | [Run Tests](#Tests) | [User Stories](#User-Stories) | [Wireframe](#Wireframe)
+
 <div align="left"> 
   <img src="client/src/images/lonely-boy.gif" alt="ace" width="200"/> </a> 
   <img src="client/src/images/gift1.gif" alt="ace" width="200"/> </a> 
 <div>
 
-Team "Partially blind and computer less" present our very own MakersBnb clone.\
-A collaboration between [Suhani](https://github.com/suhani-zaman), [Hotu](https://github.com/ClaimingCookie5), [Blessing](https://github.com/BlessingUb), [Farya](https://github.com/Xfarya) & [Corinne](https://github.com/CorinneBosch)
+Gift Hub is a platform allowing users to send & receive small gifts to friends.
 
+A collaboration between [Suhani](https://github.com/suhani-zaman), [Hotu](https://github.com/ClaimingCookie5), [Blessing](https://github.com/BlessingUb), [Farya](https://github.com/Xfarya) & [Corinne](https://github.com/CorinneBosch) around the theme 'work & social'. We have set ourselves the ambitious challenge to pick up MERN stack within 14 days to make the best out of our remaining time at Makers.
 
-## Airbnb Clone
-Our first group project at Makers Academy, learning and implementing the following techniques
+Since graduating from Makers I integrated a few more features on this project individually.\
+My implementations are integrated on `main`, but you can check out the original project on `only-gifts` branch.
+  
+## <a name="Project">Engineering Project III - Gift Hub</a>
+Our final group project at Makers Academy, learning and implementing the following techniques
 
-- Introduction to Active Record
+- Learn to MongoDB, Express, React, Node (MERN)
+- Feature and Unit testing using Cypress & Jest
 - Agile Methology for user stories & domain modeling
-- Feature and Unit testing
-- GET / POST requests - defining routes
 - Creating Tickets & using Trello
+- Break down projects into tasks and allocate them to pairs
+- Run stand-ups and retrospectives
+- Use a branch/PR/merge git workflow
+- Give and receive meaningful code review
 
-## Setup
+## <a name="Setup">Setup</a>
 
-1. **Fork** this [Bookmarker repository](https://github.com/CorinneBosch/gift-hub/) 
+1. **Fork** this [Gift-Hub repository](https://github.com/CorinneBosch/gift-hub/) 
 2. Then clone **your** fork to your computer.
 3. Ensure you have `Ruby` and `rspec` installed. Check ruby version with `ruby -v`
 4. Install bundler if you haven't already.
@@ -29,40 +37,50 @@ Our first group project at Makers Academy, learning and implementing the followi
 5. Install the gems required by this repository.
 `bundle install`
 
-## Setup database
+## Database connection
 
-Before running the application on localhost, please migrate the database.\
-If you wish to seed your db you can do so with the 2nd command.
+Before running the application on localhost, please migrate the database.
+
 ```
 rake db:migrate
 rake db:seed
 ```
 
-## Interact with the programme
+## <a name="Interact">Interact with the programme</a>
 
-Open the application in your directory with `rackup`
+Start the server side of your application in the terminal `cd server && npm start`\
+You should be notified when the connection is establised successfully.
+  
+Then open the client side concurrently in a new terminal `cd client && npm start`\
+Your browser should open up a new window and direct you to `http://localhost:3000`.
 
-Direct in your browser to `http://localhost:9292`.\
-Now you can register on MakersBnb and browse through all the lovely listings!
+Now you can register on Gift Hub and share your custom link with your friends!
 
-You can frature test and run the bookmarker program in any `code editor` or `IRB`. 
+## <a name="Tests">Run test</a>
 
-## Run test 
-
-To test all units and features at once in your terminal.\
-Print out the format documentation with the -fd shortcut.
+To run integration tests open the cypress extension in your command line.\
+In a seperate terminal start your client local host.
 ```
-$ rspec
-$ rspec -fd
+$ cd client && npx cypress open
+$ cd client && npm start
+```
+Now choose the `Run integration specs` option to run all tests or select individual tests.
+  
+You can also execute all tests in your terminal.\
+Start local host first and run cypress in a second terminal.
+```
+$ cd client && npm start
+$ cd client && npx cypress run
+```
+ 
+The server side uses Jest for end-point testing.\
+Test data is stored in a seperate Mongoose database.
+```
+$ cd server && npm test
 ```
 
-To test inividual unit or feature tests in your terminal:
-```
-$ rspec spec/units/user_spec.rb -fd
-$ rspec spec/features/sign_in_spec.rb -fd
-```
+## <a name="User-Stories">User stories</a>
 
-## User stories
 Based on the objectives and expectations of our app we came up with the following user stories:
 
 ```
@@ -79,6 +97,8 @@ I would like to be send a small gift to my friend.
 ~ (- profile page link (access to page) - button to make a donation - receive a message thanking friend for gift)
 ```
 
+## <a name="Wireframe">Wireframe</a>
 
-
-
+<div align="left"> 
+  <img src="client/src/images/wireframe.png" alt="ace" /> </a> 
+<div>

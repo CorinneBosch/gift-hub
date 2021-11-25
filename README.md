@@ -1,7 +1,7 @@
 Gift Hub
 ==================
 
-[Goals](#Project) | [Setup](#Setup) | [Programme](#Interact) | [Run Tests](#Tests) | [User Stories](#User-Stories) | [Wireframe](#Wireframe)
+[Goals](#Project) | [Setup](#Setup) | [DB Connection](#DB) | [Programme](#Interact) | [Run Tests](#Tests) | [User Stories](#User-Stories) | [Wireframe](#Wireframe)
 
 <div align="left"> 
   <img src="client/src/images/lonely-boy.gif" alt="ace" width="200"/> </a> 
@@ -37,14 +37,13 @@ Our final group project at Makers Academy, learning and implementing the followi
 5. Install the gems required by this repository.
 `bundle install`
 
-## Database connection
+## <a name="DB">Database connection</a>
 
-Before running the application on localhost, please migrate the database.
-
-```
-rake db:migrate
-rake db:seed
-```
+To run the application you have to set up your own MongoDB database.\
+Use the following [guide](https://docs.mongodb.com/manual/tutorial/getting-started/) to create an account.\
+In the server directory create a `.env` file and add it to your `.gitignore`.\
+Set your cluster connection string equal to `DB_URI` in your `.env` file.\
+Follow the next step to establish a connection with your database.
 
 ## <a name="Interact">Interact with the programme</a>
 
@@ -74,7 +73,9 @@ $ cd client && npx cypress run
 ```
  
 The server side uses Jest for end-point testing.\
-Test data is stored in a seperate Mongoose database.
+Test data is stored in a seperate database table.\
+Create a seperate database in your cluster.\ 
+Set it equal to `DB_URI_TEST` in your `.env` file.
 ```
 $ cd server && npm test
 ```
